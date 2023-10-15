@@ -4,6 +4,7 @@ import 'package:flutter_profile_picture/flutter_profile_picture.dart';
 import 'package:get/get.dart';
 import 'package:lentera_cafe_app/app/constants/colors.dart';
 import 'package:lentera_cafe_app/app/modules/profile/views/edit_profile_view.dart';
+import 'package:lentera_cafe_app/app/modules/profile/views/transaction_view.dart';
 import 'package:lentera_cafe_app/app/routes/app_pages.dart';
 
 import '../controllers/profile_controller.dart';
@@ -118,7 +119,7 @@ class ProfileView extends GetView<ProfileController> {
                     // controller.kliklogin(
                     //     controller.emailController.text,
                     //     controller.passwordController.text);
-                    // Get.to(EditProfileView());
+                    Get.to(TransactionView());
                     FocusScope.of(context).unfocus();
                     // controller.checkLogin();
                   },
@@ -186,41 +187,31 @@ class ProfileView extends GetView<ProfileController> {
                   ),
                 ),
               ),
-              Container(
-                height: Get.height * 0.25,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      height: 10,
-                    ),
-                    SizedBox(
-                      width: double.infinity,
-                      height: 50,
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStatePropertyAll(ColorsCafe.primaryRed),
-                            shape: MaterialStatePropertyAll<
-                                    RoundedRectangleBorder>(
-                                RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20)))),
-                        onPressed: () {
-                          // controller.kliklogin(
-                          //     controller.emailController.text,
-                          //     controller.passwordController.text);
-                          Get.offAllNamed(Routes.LOGIN);
-                          FocusScope.of(context).unfocus();
-                          // controller.checkLogin();
-                        },
-                        child: const Text(
-                          "Keluar",
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.w700),
-                        ),
-                      ),
-                    ),
-                  ],
+              SizedBox(
+                height: 125,
+              ),
+              SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStatePropertyAll(ColorsCafe.primaryRed),
+                      shape: MaterialStatePropertyAll<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)))),
+                  onPressed: () {
+                    // controller.kliklogin(
+                    //     controller.emailController.text,
+                    //     controller.passwordController.text);
+                    Get.offAllNamed(Routes.LOGIN);
+                    FocusScope.of(context).unfocus();
+                    // controller.checkLogin();
+                  },
+                  child: const Text(
+                    "Keluar",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                  ),
                 ),
               ),
               const SizedBox(

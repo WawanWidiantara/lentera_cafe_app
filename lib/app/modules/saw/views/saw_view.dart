@@ -33,7 +33,7 @@ class SawView extends GetView<SawController> {
               'Fitur ini, membuat anda dengan mudah menemukan menu makanan yang sesuai dengan preferensi dan kebutuhan anda. Jawab beberapa pertanyaan berikut untuk mendapatkan rekomendasi menunya.',
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
             ),
-            SizedBox(height: 60),
+            SizedBox(height: 40),
             SizedBox(
               width: double.infinity,
               height: 50,
