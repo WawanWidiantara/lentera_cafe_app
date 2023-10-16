@@ -36,7 +36,7 @@ class SawView extends GetView<SawController> {
             SizedBox(height: 40),
             SizedBox(
               width: double.infinity,
-              height: 50,
+              height: 45,
               child: ElevatedButton(
                 style: ButtonStyle(
                     backgroundColor:

@@ -1,9 +1,22 @@
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+  var current = 0.obs;
+  var test = 'test'.obs;
+  List<String> items = [
+    "Semua",
+    "Makanan",
+    "Minuman",
+    "Snack",
+  ];
 
-  final count = 0.obs;
+  List<String> icons = [
+    'assets/icons/icon all item.svg',
+    'assets/icons/icon makanan.svg',
+    'assets/icons/icon minuman.svg',
+    'assets/icons/icon snack.svg',
+  ];
+
   @override
   void onInit() {
     super.onInit();
@@ -18,6 +31,4 @@ class HomeController extends GetxController {
   void onClose() {
     super.onClose();
   }
-
-  void increment() => count.value++;
 }

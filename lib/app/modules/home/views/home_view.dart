@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:lentera_cafe_app/app/constants/colors.dart';
@@ -10,8 +11,10 @@ class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(HomeController());
     return SafeArea(
       child: Scaffold(
+        backgroundColor: ColorsCafe.mainBackground,
         body: LayoutBuilder(
           builder: (context, constraints) => Column(
             children: <Widget>[
@@ -19,13 +22,10 @@ class HomeView extends GetView<HomeController> {
               Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 25, 20, 25),
+                    padding: const EdgeInsets.fromLTRB(20, 25, 20, 0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // const SizedBox(
-                        //   height: 10,
-                        // ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -113,8 +113,68 @@ class HomeView extends GetView<HomeController> {
                         SizedBox(
                           height: 30,
                         ),
+                        SizedBox(
+                          width: Get.width,
+                          height: 90,
+                          child: ListView.builder(
+                            physics: NeverScrollableScrollPhysics(),
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 4,
+                            itemBuilder: ((context, index) {
+                              return Padding(
+                                padding: const EdgeInsets.only(right: 20),
+                                child: Container(
+                                  width: 65,
+                                  height: 90,
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          controller.current.value = index;
+                                          print(index);
+                                        },
+                                        child: SizedBox(
+                                          child: Obx(() => Container(
+                                                width: 65,
+                                                height: 65,
+                                                decoration: BoxDecoration(
+                                                  color: controller
+                                                              .current.value ==
+                                                          index
+                                                      ? ColorsCafe.primaryRed
+                                                      : ColorsCafe
+                                                          .popUpBackground,
+                                                  borderRadius:
+                                                      BorderRadius.circular(10),
+                                                ),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(15),
+                                                  child: SvgPicture.asset(
+                                                    controller.icons[index],
+                                                    color: controller.current
+                                                                .value ==
+                                                            index
+                                                        ? ColorsCafe
+                                                            .popUpBackground
+                                                        : ColorsCafe.primaryRed,
+                                                  ),
+                                                ),
+                                              )),
+                                        ),
+                                      ),
+                                      Text(controller.items[index]),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            }),
+                          ),
+                        ),
                         const SizedBox(
-                          height: 10,
+                          height: 20,
                         ),
                         const Text(
                           "Semua menu",
@@ -128,14 +188,14 @@ class HomeView extends GetView<HomeController> {
                         ),
                         SizedBox(
                           height:
-                              constraints.maxHeight - (Get.height * 1 / 3.7),
+                              constraints.maxHeight - (Get.height * 1 / 2.4),
                           child: GridView.count(
                             crossAxisCount: 2,
                             crossAxisSpacing: 4,
                             mainAxisSpacing: 4,
                             childAspectRatio: (2 / 2.2),
                             children: List.generate(
-                              4,
+                              6,
                               (index) => Padding(
                                 padding: const EdgeInsets.only(top: 5),
                                 child: InkWell(

@@ -27,6 +27,7 @@ class BottomNavbarView extends GetView<BottomNavbarController> {
         bottomNavigationBar: Container(
           height: 70,
           child: BottomNavigationBar(
+            backgroundColor: ColorsCafe.popUpBackground,
             selectedItemColor: ColorsCafe.primaryRed,
             type: BottomNavigationBarType.fixed,
             onTap: controller.changeTabIndex,

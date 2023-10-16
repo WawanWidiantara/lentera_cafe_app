@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 class ItemController extends GetxController {
   //TODO: Implement ItemController
 
-  final count = 0.obs;
+  final count = 1.obs;
   @override
   void onInit() {
     super.onInit();
@@ -17,6 +17,12 @@ class ItemController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  void decrement() {
+    if (count.value > 1) {
+      count.value--;
+    }
   }
 
   void increment() => count.value++;

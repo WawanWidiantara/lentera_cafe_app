@@ -10,6 +10,7 @@ class ItemView extends GetView<ItemController> {
   const ItemView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ItemController());
     return SafeArea(
       child: Scaffold(
           body: Stack(
@@ -73,8 +74,8 @@ class ItemView extends GetView<ItemController> {
                     Row(
                       children: [
                         Container(
-                          width: 150,
-                          height: 30,
+                          width: 105,
+                          height: 35,
                           decoration: BoxDecoration(
                             color: ColorsCafe.mainBackground,
                             borderRadius: BorderRadius.circular(5),
@@ -82,11 +83,16 @@ class ItemView extends GetView<ItemController> {
                           child: Row(
                             children: [
                               Container(
-                                width: 50,
-                                height: 30,
+                                width: 35,
+                                height: 35,
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    controller.decrement();
+                                    print(controller.count.value);
+                                  },
                                   style: ButtonStyle(
+                                    padding: MaterialStateProperty.all(
+                                        EdgeInsets.zero),
                                     backgroundColor:
                                         const MaterialStatePropertyAll(
                                             ColorsCafe.formStroke),
@@ -94,16 +100,23 @@ class ItemView extends GetView<ItemController> {
                                   child: Icon(Icons.remove),
                                 ),
                               ),
-                              SizedBox(
-                                width: 50,
-                                child: Center(child: Text('1')),
-                              ),
+                              Obx(() => SizedBox(
+                                    width: 35,
+                                    child: Center(
+                                        child: Text(
+                                            controller.count.value.toString())),
+                                  )),
                               Container(
-                                width: 50,
-                                height: 30,
+                                width: 35,
+                                height: 35,
                                 child: ElevatedButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    controller.increment();
+                                    print(controller.count.value);
+                                  },
                                   style: ButtonStyle(
+                                    padding: MaterialStateProperty.all(
+                                        EdgeInsets.zero),
                                     backgroundColor:
                                         const MaterialStatePropertyAll(
                                             ColorsCafe.primaryRed),
@@ -117,11 +130,11 @@ class ItemView extends GetView<ItemController> {
                         SizedBox(
                           width: 10,
                         ),
-                        Text(
-                          'Rp. 20.000',
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w700),
-                        ),
+                        Obx(() => Text(
+                              'Rp. ${20000 * controller.count.value}',
+                              style: TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w700),
+                            )),
                       ],
                     ),
                     SizedBox(
@@ -132,7 +145,7 @@ class ItemView extends GetView<ItemController> {
                       children: [
                         SizedBox(
                           width: Get.width * 0.73,
-                          height: 50,
+                          height: 45,
                           child: ElevatedButton(
                             style: ButtonStyle(
                                 backgroundColor: const MaterialStatePropertyAll(
@@ -158,10 +171,13 @@ class ItemView extends GetView<ItemController> {
                           ),
                         ),
                         SizedBox(
-                          width: 50,
-                          height: 50,
+                          width: 45,
+                          height: 45,
                           child: ElevatedButton(
                             style: ButtonStyle(
+                                alignment: Alignment.center,
+                                padding:
+                                    MaterialStateProperty.all(EdgeInsets.zero),
                                 elevation: MaterialStateProperty.all(0),
                                 backgroundColor: const MaterialStatePropertyAll(
                                     ColorsCafe.mainBackground),
@@ -169,7 +185,7 @@ class ItemView extends GetView<ItemController> {
                                         RoundedRectangleBorder>(
                                     RoundedRectangleBorder(
                                         borderRadius:
-                                            BorderRadius.circular(20)))),
+                                            BorderRadius.circular(15)))),
                             onPressed: () {
                               // controller.kliklogin(
                               //     controller.emailController.text,
@@ -229,46 +245,52 @@ class ItemView extends GetView<ItemController> {
                                               ),
                                               color: Colors.white,
                                             ),
-                                            child: TextFormField(
-                                              maxLines: 10,
-                                              maxLength: 200,
-                                              autofocus: false,
-                                              style: const TextStyle(
-                                                fontSize: 16,
-                                                color: ColorsCafe.greyText,
-                                              ),
-                                              decoration: InputDecoration(
-                                                contentPadding:
-                                                    const EdgeInsets.fromLTRB(
-                                                        16, 5, 0, 5),
-                                                hintText: '',
-                                                filled: true,
-                                                fillColor:
-                                                    ColorsCafe.popUpBackground,
-                                                errorBorder: OutlineInputBorder(
-                                                  borderSide: const BorderSide(
-                                                      color: Colors.red),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          20.0),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.only(top: 5),
+                                              child: TextFormField(
+                                                maxLines: 9,
+                                                maxLength: 200,
+                                                autofocus: false,
+                                                style: const TextStyle(
+                                                  fontSize: 16,
+                                                  color: ColorsCafe.greyText,
                                                 ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: const BorderSide(
-                                                      color: ColorsCafe
-                                                          .popUpBackground),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          20.0),
-                                                ),
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: const BorderSide(
-                                                      color: ColorsCafe
-                                                          .popUpBackground),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          20.0),
+                                                decoration: InputDecoration(
+                                                  contentPadding:
+                                                      const EdgeInsets.fromLTRB(
+                                                          16, 5, 0, 5),
+                                                  hintText: '',
+                                                  filled: true,
+                                                  fillColor: ColorsCafe
+                                                      .popUpBackground,
+                                                  errorBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide:
+                                                        const BorderSide(
+                                                            color: Colors.red),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20.0),
+                                                  ),
+                                                  focusedBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: const BorderSide(
+                                                        color: ColorsCafe
+                                                            .popUpBackground),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20.0),
+                                                  ),
+                                                  enabledBorder:
+                                                      OutlineInputBorder(
+                                                    borderSide: const BorderSide(
+                                                        color: ColorsCafe
+                                                            .popUpBackground),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            20.0),
+                                                  ),
                                                 ),
                                               ),
                                             ),
@@ -332,7 +354,7 @@ class ItemView extends GetView<ItemController> {
           ),
           Positioned(
             top: 20,
-            left: -325,
+            left: Get.width * (-0.8),
             right: 0,
             child: IconButton(
               onPressed: () {

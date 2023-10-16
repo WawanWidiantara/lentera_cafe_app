@@ -67,7 +67,7 @@ class ProfileView extends GetView<ProfileController> {
               ),
               SizedBox(
                 width: double.infinity,
-                height: 50,
+                height: 45,
                 child: ElevatedButton(
                   style: ButtonStyle(
                       backgroundColor:
@@ -107,7 +107,7 @@ class ProfileView extends GetView<ProfileController> {
               ),
               SizedBox(
                 width: double.infinity,
-                height: 50,
+                height: 45,
                 child: ElevatedButton(
                   style: ButtonStyle(
                       backgroundColor:
@@ -147,7 +147,7 @@ class ProfileView extends GetView<ProfileController> {
               ),
               SizedBox(
                 width: double.infinity,
-                height: 50,
+                height: 45,
                 child: ElevatedButton(
                   style: ButtonStyle(
                       backgroundColor:
@@ -192,7 +192,7 @@ class ProfileView extends GetView<ProfileController> {
               ),
               SizedBox(
                 width: double.infinity,
-                height: 50,
+                height: 45,
                 child: ElevatedButton(
                   style: ButtonStyle(
                       backgroundColor:
