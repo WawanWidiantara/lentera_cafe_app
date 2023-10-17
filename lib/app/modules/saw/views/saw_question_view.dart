@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lentera_cafe_app/app/constants/colors.dart';
 import 'package:lentera_cafe_app/app/modules/saw/controllers/saw_controller.dart';
+import 'package:lentera_cafe_app/app/modules/saw/views/saw_result_view.dart';
 
 class SawQuestionView extends GetView {
   const SawQuestionView({Key? key}) : super(key: key);
@@ -78,6 +79,7 @@ class SawQuestionView extends GetView {
                             child: InkWell(
                               onTap: () {
                                 controller.current.value = index;
+                                Get.off(SawResultView());
                               },
                               child: Obx(() => Container(
                                   height: 45,

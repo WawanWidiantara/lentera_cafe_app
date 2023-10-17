@@ -50,6 +50,9 @@ class TransactionView extends GetView<TransactionController> {
                   unselectedLabelStyle:
                       const TextStyle(fontWeight: FontWeight.normal),
                 )),
+            SizedBox(
+              height: 10,
+            ),
             Expanded(
                 child: TabBarView(
               controller: controller.controller,
