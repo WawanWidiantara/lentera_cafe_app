@@ -249,7 +249,7 @@ class RegisterView extends GetView<RegisterController> {
                     ),
                     SizedBox(
                       width: double.infinity,
-                      height: 50,
+                      height: 45,
                       child: ElevatedButton(
                         style: ButtonStyle(
                             backgroundColor: const MaterialStatePropertyAll(

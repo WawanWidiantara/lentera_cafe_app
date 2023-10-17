@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:lentera_cafe_app/app/constants/colors.dart';
+import 'package:lentera_cafe_app/app/modules/home/views/notification_view.dart';
 import 'package:lentera_cafe_app/app/routes/app_pages.dart';
 
 import '../controllers/home_controller.dart';
@@ -31,7 +32,7 @@ class HomeView extends GetView<HomeController> {
                           children: [
                             SizedBox(
                               height: 38,
-                              width: constraints.maxWidth - 100,
+                              width: constraints.maxWidth - 90,
                               child: TextFormField(
                                 onChanged: (search) {},
                                 onSaved: (search) {},
@@ -67,10 +68,24 @@ class HomeView extends GetView<HomeController> {
                                 ),
                               ),
                             ),
-                            Container(
-                              width: 38,
-                              height: 38,
-                              color: ColorsCafe.primaryRed,
+                            InkWell(
+                              onTap: () {
+                                Get.to(NotificationView());
+                              },
+                              child: Container(
+                                  width: 38,
+                                  height: 38,
+                                  decoration: BoxDecoration(
+                                    color: ColorsCafe.primaryRed,
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: SvgPicture.asset(
+                                      'assets/icons/icon notif.svg',
+                                      color: ColorsCafe.popUpBackground,
+                                    ),
+                                  )),
                             )
                           ],
                         ),

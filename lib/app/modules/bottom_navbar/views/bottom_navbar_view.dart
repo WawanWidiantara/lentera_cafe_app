@@ -6,6 +6,7 @@ import 'package:lentera_cafe_app/app/modules/cart/views/cart_view.dart';
 import 'package:lentera_cafe_app/app/modules/home/views/home_view.dart';
 import 'package:lentera_cafe_app/app/modules/profile/views/profile_view.dart';
 import 'package:lentera_cafe_app/app/modules/saw/views/saw_view.dart';
+import 'package:transitioned_indexed_stack/transitioned_indexed_stack.dart';
 
 import '../controllers/bottom_navbar_controller.dart';
 
@@ -15,7 +16,11 @@ class BottomNavbarView extends GetView<BottomNavbarController> {
   Widget build(BuildContext context) {
     return GetBuilder<BottomNavbarController>(builder: (controller) {
       return Scaffold(
-        body: IndexedStack(
+        body: FadeIndexedStack(
+          beginOpacity: 0.0,
+          endOpacity: 1.0,
+          curve: Curves.easeInOut,
+          duration: const Duration(milliseconds: 200),
           index: controller.tabIndex,
           children: const [
             HomeView(),

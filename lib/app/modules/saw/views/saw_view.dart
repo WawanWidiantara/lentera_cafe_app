@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lentera_cafe_app/app/constants/colors.dart';
 import 'package:lentera_cafe_app/app/constants/icons.dart';
-import 'package:lentera_cafe_app/app/modules/saw/views/saw_result_view.dart';
+import 'package:lentera_cafe_app/app/modules/saw/views/saw_question_view.dart';
 
 import '../controllers/saw_controller.dart';
 
@@ -48,7 +48,7 @@ class SawView extends GetView<SawController> {
                   // controller.kliklogin(
                   //     controller.emailController.text,
                   //     controller.passwordController.text);
-                  Get.to(SawResultView());
+                  Get.to(SawQuestionView());
                   FocusScope.of(context).unfocus();
                   // controller.checkLogin();
                 },

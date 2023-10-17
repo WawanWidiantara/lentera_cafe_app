@@ -151,7 +151,7 @@ class LoginView extends GetView<LoginController> {
                   ),
                   SizedBox(
                     width: double.infinity,
-                    height: 50,
+                    height: 45,
                     child: ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor: const MaterialStatePropertyAll(
