@@ -12,11 +12,13 @@ class SawQuestionView extends GetView {
     return Scaffold(
         backgroundColor: ColorsCafe.primaryRed,
         appBar: AppBar(
-          title: const Text(
-            '1/5 Pertanyaan',
-            style: TextStyle(
-                color: Colors.white, fontSize: 22, fontWeight: FontWeight.w700),
-          ),
+          title: Obx(() => Text(
+                '${controller.count}/${controller.sawQnAList.length} Pertanyaan',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w700),
+              )),
           iconTheme: const IconThemeData(color: Colors.white),
           centerTitle: true,
           backgroundColor: Colors.transparent,
@@ -45,75 +47,175 @@ class SawQuestionView extends GetView {
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          '1.',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
+                        Obx(() => Text(
+                              '${controller.count}.',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            )),
                         SizedBox(
                           width: 5,
                         ),
                         Expanded(
-                          child: Text(
-                            'Bagaimana keadaan cuaca hari ini?',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
+                          child: Obx(() => Text(
+                                controller.sawQnAList.isEmpty == false
+                                    ? '${controller.sawQnAList[controller.count.value - 1].pertanyaan}'
+                                    : '',
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              )),
                         ),
                       ],
                     ),
                     SizedBox(
                       height: 20,
                     ),
-                    ListView.builder(
+                    Obx(() => ListView.builder(
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: 4,
+                        itemCount: controller.sawQnAList.isEmpty == false
+                            ? controller.sawQnAList[controller.count.value - 1]
+                                .subkriteria?.length
+                            : 0,
                         itemBuilder: (context, index) {
                           return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: InkWell(
-                              onTap: () {
-                                controller.current.value = index;
-                                Get.off(SawResultView());
-                              },
-                              child: Obx(() => Container(
-                                  height: 45,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    border: Border.all(
-                                        color: controller.current.value == index
-                                            ? ColorsCafe.primaryRed
-                                            : ColorsCafe.formStroke,
-                                        width: 1),
-                                    color: controller.current.value == index
-                                        ? ColorsCafe.primaryRed
-                                        : ColorsCafe.popUpBackground,
+                            padding: EdgeInsets.symmetric(vertical: 8.0),
+                            child: SizedBox(
+                              height: 45,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  controller.insertJawaban(
+                                      controller
+                                          .sawQnAList[
+                                              controller.count.value - 1]
+                                          .namaKriteria
+                                          .toString(),
+                                      controller
+                                          .sawQnAList[
+                                              controller.count.value - 1]
+                                          .subkriteria![index]
+                                          .toString());
+                                  print(controller.jawaban);
+                                  controller.current.value = index;
+                                  controller
+                                      .increment(controller.sawQnAList.length);
+                                  if (controller.jawaban.length ==
+                                      controller.sawQnAList.length) {
+                                    Get.off(SawResultView(),
+                                        arguments: controller.jawaban);
+                                  }
+                                },
+                                style: ButtonStyle(
+                                  shadowColor: MaterialStatePropertyAll(
+                                      Colors.transparent),
+                                  backgroundColor:
+                                      const MaterialStatePropertyAll(
+                                          ColorsCafe.popUpBackground),
+                                  shape: MaterialStatePropertyAll<
+                                          RoundedRectangleBorder>(
+                                      RoundedRectangleBorder(
+                                          side: BorderSide(
+                                              color: ColorsCafe.formStroke,
+                                              width: 1),
+                                          borderRadius:
+                                              BorderRadius.circular(20))),
+                                  overlayColor:
+                                      MaterialStateProperty.resolveWith<Color?>(
+                                    (Set<MaterialState> states) {
+                                      if (states
+                                          .contains(MaterialState.pressed))
+                                        return ColorsCafe
+                                            .primaryRed; //<-- SEE HERE
+                                      return null; // Defer to the widget's default.
+                                    },
                                   ),
-                                  alignment: Alignment.centerLeft,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(left: 20.0),
-                                    child: Text(
-                                      'Pilihan ${index + 1}',
-                                      style: TextStyle(
-                                          color:
-                                              controller.current.value == index
-                                                  ? Colors.white
-                                                  : ColorsCafe.mainText,
-                                          fontSize: 16,
-                                          fontWeight:
-                                              controller.current.value == index
-                                                  ? FontWeight.w700
-                                                  : FontWeight.w500),
+                                  foregroundColor:
+                                      MaterialStateProperty.resolveWith<Color?>(
+                                    (Set<MaterialState> states) {
+                                      if (states
+                                          .contains(MaterialState.pressed))
+                                        return ColorsCafe
+                                            .popUpBackground; //<-- SEE HERE
+                                      return ColorsCafe
+                                          .mainText; // Defer to the widget's default.
+                                    },
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Obx(() => Text(
+                                          controller.sawQnAList.isEmpty == false
+                                              ? '${controller.sawQnAList[controller.count.value - 1].subkriteria?[index]}'
+                                              : '',
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w700),
+                                        )),
+                                    SizedBox(
+                                      width: 10,
                                     ),
-                                  ))),
+                                  ],
+                                ),
+                              ),
                             ),
                           );
-                        }),
+                          // return Padding(
+                          //   padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          //   child: InkWell(
+                          //     onTap: () {
+                          //       print(controller
+                          //           .sawQnAList[controller.count.value - 1]
+                          //           .subkriteria?[index]);
+                          //       controller.current.value = index;
+                          //       controller
+                          //           .increment(controller.sawQnAList.length);
+                          //       // if (controller.count.value ==
+                          //       //     controller.sawQnAList.length) {
+                          //       //   Get.off(SawResultView());
+                          //       // }
+                          //     },
+                          //     child: Obx(() => Container(
+                          //         height: 45,
+                          //         decoration: BoxDecoration(
+                          //           borderRadius: BorderRadius.circular(20),
+                          //           border: Border.all(
+                          //               color: controller.current.value == index
+                          //                   ? ColorsCafe.primaryRed
+                          //                   : ColorsCafe.formStroke,
+                          //               width: 1),
+                          //           color: controller.current.value == index
+                          //               ? ColorsCafe.primaryRed
+                          //               : ColorsCafe.popUpBackground,
+                          //         ),
+                          //         alignment: Alignment.centerLeft,
+                          //         child: Padding(
+                          //           padding: const EdgeInsets.only(left: 20.0),
+                          //           child: Obx(() => Text(
+                          //                 // 'Pilihan ${index + 1}',
+                          //                 controller.sawQnAList.isEmpty == false
+                          //                     ? '${controller.sawQnAList[controller.count.value - 1].subkriteria?[index]}'
+                          //                     : '',
+                          //                 style: TextStyle(
+                          //                     color: controller.current.value ==
+                          //                             index
+                          //                         ? Colors.white
+                          //                         : ColorsCafe.mainText,
+                          //                     fontSize: 16,
+                          //                     fontWeight:
+                          //                         controller.current.value ==
+                          //                                 index
+                          //                             ? FontWeight.w700
+                          //                             : FontWeight.w500),
+                          //               )),
+                          //         ))),
+                          //   ),
+                          // );
+                        })),
                     SizedBox(
                       height: 10,
                     )

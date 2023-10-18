@@ -1,0 +1,12 @@
+{
+        "id": 15,
+        "email": "user@user.com",
+        "full_name": "asemmehh",
+        "phone_number": "082311313",
+        "profile_picture": null,
+        "date_joined": "2023-10-12",
+        "last_login": "2023-10-18",
+        "is_active": true,
+        "is_admin": false,
+        "is_superuser": false
+}

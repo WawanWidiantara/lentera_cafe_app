@@ -49,6 +49,7 @@ class SawView extends GetView<SawController> {
                   //     controller.emailController.text,
                   //     controller.passwordController.text);
                   Get.to(SawQuestionView());
+                  // controller.fetchItemsData();
                   FocusScope.of(context).unfocus();
                   // controller.checkLogin();
                 },

@@ -19,7 +19,6 @@ class HomeView extends GetView<HomeController> {
         body: LayoutBuilder(
           builder: (context, constraints) => Column(
             children: <Widget>[
-              // SliderWidget(SliderList, "text", "text"),
               Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
@@ -148,7 +147,10 @@ class HomeView extends GetView<HomeController> {
                                       InkWell(
                                         onTap: () {
                                           controller.current.value = index;
-                                          print(index);
+                                          controller.fetchItemsData(controller
+                                              .items[index]
+                                              .toLowerCase());
+                                          print(controller.items[index]);
                                         },
                                         child: SizedBox(
                                           child: Obx(() => Container(
@@ -204,81 +206,100 @@ class HomeView extends GetView<HomeController> {
                         SizedBox(
                           height:
                               constraints.maxHeight - (Get.height * 1 / 2.4),
-                          child: GridView.count(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 4,
-                            mainAxisSpacing: 4,
-                            childAspectRatio: (2 / 2.2),
-                            children: List.generate(
-                              6,
-                              (index) => Padding(
-                                padding: const EdgeInsets.only(top: 5),
-                                child: InkWell(
-                                  onTap: () {
-                                    Get.toNamed(Routes.ITEM);
-                                  },
-                                  child: Card(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10)),
-                                    elevation: 5,
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      // mainAxisAlignment:
-                                      //     MainAxisAlignment.ce,
-                                      children: [
-                                        AspectRatio(
-                                          aspectRatio: 3 / 2.1,
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  const BorderRadius.only(
-                                                      topLeft:
-                                                          Radius.circular(10),
-                                                      topRight:
-                                                          Radius.circular(10)),
-                                              image: DecorationImage(
-                                                  image: NetworkImage(
-                                                    'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif',
-                                                  ),
-                                                  fit: BoxFit.cover),
+                          child: Obx(() => GridView.count(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: 4,
+                                mainAxisSpacing: 4,
+                                childAspectRatio: (2 / 2.2),
+                                children: List.generate(
+                                  controller.itemsList.length,
+                                  (index) => Padding(
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: InkWell(
+                                      onTap: () {
+                                        Get.toNamed(Routes.ITEM,
+                                            arguments:
+                                                controller.itemsList[index].id);
+                                      },
+                                      child: Card(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                        elevation: 5,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          // mainAxisAlignment:
+                                          //     MainAxisAlignment.ce,
+                                          children: [
+                                            AspectRatio(
+                                              aspectRatio: 3 / 2.1,
+                                              child: Container(
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      const BorderRadius.only(
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  10),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  10)),
+                                                  image: DecorationImage(
+                                                      image: NetworkImage(
+                                                        controller
+                                                                    .itemsList[
+                                                                        index]
+                                                                    .gambar !=
+                                                                null
+                                                            ? controller
+                                                                .itemsList[
+                                                                    index]
+                                                                .gambar
+                                                                .toString()
+                                                            : 'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif',
+                                                      ),
+                                                      fit: BoxFit.cover),
+                                                ),
+                                              ),
                                             ),
-                                          ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(10.0),
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    controller.itemsList[index]
+                                                        .namaItem
+                                                        .toString(),
+                                                    style: const TextStyle(
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.w700),
+                                                  ),
+                                                  SizedBox(
+                                                    height: 5,
+                                                  ),
+                                                  Text(
+                                                    'Rp. ${controller.itemsList[index].harga.toString()}',
+                                                    style: const TextStyle(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w400),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Sushi Uzumaki',
-                                                style: const TextStyle(
-                                                    fontSize: 14,
-                                                    fontWeight:
-                                                        FontWeight.w700),
-                                              ),
-                                              SizedBox(
-                                                height: 5,
-                                              ),
-                                              Text(
-                                                'Rp.20.000',
-                                                style: const TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight:
-                                                        FontWeight.w400),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ),
-                          ),
+                              )),
                         ),
                       ],
                     ),

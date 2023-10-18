@@ -1,0 +1,11 @@
+{
+    "id": 1,
+    "nama_item": "beef crispy steak",
+    "kategori": "makanan",
+    "harga": 32000,
+    "gambar": "https://lenteracaffe.faiznazhir.com/media/images/download.jpeg",
+    "stok": "tersedia",
+    "nilai": 0,
+    "jumlah_bintang": 0,
+    "jumlah_penilai": 0
+}
