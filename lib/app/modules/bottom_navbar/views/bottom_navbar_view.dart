@@ -57,9 +57,13 @@ class BottomNavbarView extends GetView<BottomNavbarController> {
                   AssetImage('assets/icons/cart.png'),
                   color: ColorsCafe.primaryRed,
                 ),
-                icon: ImageIcon(
-                  AssetImage('assets/icons/cart.png'),
-                  color: ColorsCafe.greyText,
+                icon: Stack(
+                  children: [
+                    ImageIcon(
+                      AssetImage('assets/icons/cart.png'),
+                      color: ColorsCafe.greyText,
+                    ),
+                  ],
                 ),
                 label: 'Cart',
               ),
@@ -68,9 +72,13 @@ class BottomNavbarView extends GetView<BottomNavbarController> {
                   AssetImage('assets/icons/saw.png'),
                   color: ColorsCafe.primaryRed,
                 ),
-                icon: ImageIcon(
-                  AssetImage('assets/icons/saw.png'),
-                  color: ColorsCafe.greyText,
+                icon: Stack(
+                  children: [
+                    ImageIcon(
+                      AssetImage('assets/icons/saw.png'),
+                      color: ColorsCafe.greyText,
+                    ),
+                  ],
                 ),
                 label: 'Saw',
               ),

@@ -45,6 +45,7 @@ class HomeController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+    Get.delete<HomeController>();
   }
 
   Future fetchItemsData(String kategori) async {

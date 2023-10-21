@@ -13,7 +13,9 @@ class SawQuestionView extends GetView {
         backgroundColor: ColorsCafe.primaryRed,
         appBar: AppBar(
           title: Obx(() => Text(
-                '${controller.count}/${controller.sawQnAList.length} Pertanyaan',
+                controller.sawQnAList.isEmpty
+                    ? ''
+                    : '${controller.count}/${controller.sawQnAList.length} Pertanyaan',
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 22,
@@ -48,7 +50,9 @@ class SawQuestionView extends GetView {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Obx(() => Text(
-                              '${controller.count}.',
+                              controller.sawQnAList.isEmpty
+                                  ? ''
+                                  : '${controller.count}.',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w700,

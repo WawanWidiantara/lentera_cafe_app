@@ -1,0 +1,20 @@
+{
+    "id": 3,
+    "order_item": [
+        {
+            "id": 4,
+            "nama_item": "beef crispy steak",
+            "gambar": "https://lenteracaffe.faiznazhir.com/media/images/picture-1649041501_d4ZaV6o.jpg",
+            "catatan": "dada",
+            "jumlah_pesanan": 3,
+            "total_harga": 96000,
+            "order": 4,
+            "item": 1
+        }
+    ],
+    "waktu_pemesanan": "2023-10-21T08:48:30.360156Z",
+    "total_pembayaran": 373000,
+    "is_notified": false,
+    "status": "keranjang",
+    "user": 2
+}

@@ -16,6 +16,8 @@ dependencies:
   http: ^1.1.0
   image_picker: ^1.0.4
   intl: ^0.18.1
+  qr_flutter: ^4.1.0
+
   string_extensions: ^0.6.12
   transitioned_indexed_stack: ^1.0.2
   url_launcher: ^6.1.14

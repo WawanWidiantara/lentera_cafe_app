@@ -3,6 +3,7 @@ class Items {
   String? namaItem;
   String? kategori;
   int? harga;
+  String? deskripsi;
   String? gambar;
   String? stok;
   int? nilai;
@@ -14,6 +15,7 @@ class Items {
       this.namaItem,
       this.kategori,
       this.harga,
+      this.deskripsi,
       this.gambar,
       this.stok,
       this.nilai,
@@ -25,6 +27,7 @@ class Items {
     namaItem = json['nama_item'];
     kategori = json['kategori'];
     harga = json['harga'];
+    deskripsi = json['deskripsi'];
     gambar = json['gambar'];
     stok = json['stok'];
     nilai = json['nilai'];
@@ -38,6 +41,7 @@ class Items {
     data['nama_item'] = namaItem;
     data['kategori'] = kategori;
     data['harga'] = harga;
+    data['deskripsi'] = deskripsi;
     data['gambar'] = gambar;
     data['stok'] = stok;
     data['nilai'] = nilai;

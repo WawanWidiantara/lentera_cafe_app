@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:lentera_cafe_app/app/constants/colors.dart';
+import 'package:lentera_cafe_app/app/modules/profile/controllers/riwayat_controller.dart';
 import 'package:lentera_cafe_app/app/modules/profile/views/detail_transaction_view.dart';
 
 class FinishView extends GetView {
   const FinishView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(RiwayatController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -15,10 +17,10 @@ class FinishView extends GetView {
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 10),
             child: Column(
               children: [
-                ListView.builder(
+                Obx(() => ListView.builder(
                     physics: const BouncingScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: 12,
+                    itemCount: controller.selesaiList.length,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -44,13 +46,13 @@ class FinishView extends GetView {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'Order ID : 320194',
+                                      'Order ID : ${controller.selesaiList[index].id}',
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600),
                                     ),
                                     Text(
-                                      '09/10/2023',
+                                      '${controller.selesaiList[index].waktuPemesanan}',
                                       style: TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w400),
@@ -77,7 +79,7 @@ class FinishView extends GetView {
                                               fontWeight: FontWeight.w400),
                                         ),
                                         Text(
-                                          '03',
+                                          '${controller.selesaiList[index].orderItem?.length}',
                                           style: TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w600),
@@ -93,7 +95,7 @@ class FinishView extends GetView {
                                               fontWeight: FontWeight.w400),
                                         ),
                                         Text(
-                                          'Rp. 30.000',
+                                          'Rp. ${controller.selesaiList[index].totalPembayaran}',
                                           style: TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w600),
@@ -111,7 +113,11 @@ class FinishView extends GetView {
                                   children: [
                                     InkWell(
                                       onTap: () {
-                                        Get.to(DetailTransactionView());
+                                        Get.to(DetailTransactionView(),
+                                            arguments: [
+                                              controller.menungguList[index].id,
+                                              'selesai'
+                                            ]);
                                       },
                                       child: Container(
                                         height: 30,
@@ -141,7 +147,7 @@ class FinishView extends GetView {
                           ),
                         ),
                       );
-                    }),
+                    })),
               ],
             ),
           ),

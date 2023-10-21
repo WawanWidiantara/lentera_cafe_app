@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:lentera_cafe_app/app/constants/colors.dart';
-import 'package:lentera_cafe_app/app/routes/app_pages.dart';
-
 import '../controllers/item_controller.dart';
 
 class ItemView extends GetView<ItemController> {
@@ -11,6 +9,7 @@ class ItemView extends GetView<ItemController> {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ItemController());
+
     return SafeArea(
       child: Scaffold(
           body: Obx(() => controller.itemDetail['id'] == null
@@ -71,7 +70,8 @@ class ItemView extends GetView<ItemController> {
                                 height: 20,
                               ),
                               Text(
-                                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut',
+                                controller.itemDetail['deskripsi'].toString(),
+                                // 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut',
                                 textAlign: TextAlign.justify,
                                 style: TextStyle(
                                   fontSize: 14,
@@ -178,7 +178,8 @@ class ItemView extends GetView<ItemController> {
                                         // controller.kliklogin(
                                         //     controller.emailController.text,
                                         //     controller.passwordController.text);
-                                        Get.toNamed(Routes.BOTTOM_NAVBAR);
+                                        controller.postOrder();
+
                                         FocusScope.of(context).unfocus();
                                         // controller.checkLogin();
                                       },
@@ -210,10 +211,6 @@ class ItemView extends GetView<ItemController> {
                                                       BorderRadius.circular(
                                                           15)))),
                                       onPressed: () {
-                                        // controller.kliklogin(
-                                        //     controller.emailController.text,
-                                        //     controller.passwordController.text);
-                                        // Get.toNamed(Routes.BOTTOM_NAVBAR);
                                         Get.bottomSheet(
                                           isScrollControlled: true,
                                           Container(
@@ -278,6 +275,8 @@ class ItemView extends GetView<ItemController> {
                                                             const EdgeInsets
                                                                 .only(top: 5),
                                                         child: TextFormField(
+                                                          controller: controller
+                                                              .catatanController,
                                                           maxLines: 9,
                                                           maxLength: 200,
                                                           autofocus: false,
@@ -354,13 +353,13 @@ class ItemView extends GetView<ItemController> {
                                                                         BorderRadius.circular(
                                                                             20)))),
                                                         onPressed: () {
-                                                          // controller.kliklogin(
-                                                          //     controller.emailController.text,
-                                                          //     controller.passwordController.text);
+                                                          controller.insertCatatan(
+                                                              controller
+                                                                  .catatanController
+                                                                  .text);
                                                           Get.back();
                                                           FocusScope.of(context)
                                                               .unfocus();
-                                                          // controller.checkLogin();
                                                         },
                                                         child: const Text(
                                                           "Simpan",
