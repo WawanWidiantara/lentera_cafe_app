@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'dart:convert';
 
 import 'package:get/get.dart';
@@ -5,6 +7,7 @@ import 'package:lentera_cafe_app/app/constants/url.dart';
 import 'package:lentera_cafe_app/app/data/models/cart_model.dart';
 import 'package:lentera_cafe_app/app/modules/login/controllers/login_controller.dart';
 import 'package:http/http.dart' as http;
+import 'package:lentera_cafe_app/app/widget/snackbar.dart';
 
 class RiwayatController extends GetxController {
   final loginC = Get.put(LoginController());
@@ -12,7 +15,6 @@ class RiwayatController extends GetxController {
   var menungguList = <Cart>[].obs;
   var selesaiList = <Cart>[].obs;
 
-  // final count = 0.obs;
   @override
   void onInit() {
     super.onInit();
@@ -33,7 +35,7 @@ class RiwayatController extends GetxController {
   }
 
   Future fetchWaiting() async {
-    isLoading(false);
+    isLoading(true);
     try {
       final userData = loginC.getStorage.read('user');
       final idUser = userData['id'];
@@ -43,7 +45,7 @@ class RiwayatController extends GetxController {
         'Authorization': 'Token ${loginC.getStorage.read("token")}',
       });
       var result = json.decode(response.body);
-      // print(result);
+
       if (result.isEmpty) {
         menungguList.value = [];
         update();
@@ -55,9 +57,6 @@ class RiwayatController extends GetxController {
         menungguList.value = jsonItems.map<Cart>((json) {
           return Cart.fromJson(json);
         }).toList();
-        // var cart = Cart.fromJson(result[0]);
-        // menungguList.value = cart.toJson();
-        print(menungguList[0].orderItem?[0].namaItem);
         update();
         isLoading(false);
         update();
@@ -65,7 +64,7 @@ class RiwayatController extends GetxController {
       }
     } catch (e) {
       isLoading(false);
-      throw Exception(e);
+      SnackBarWidget.showSnackBar('Error', '$e', 'err');
     }
   }
 
@@ -74,7 +73,7 @@ class RiwayatController extends GetxController {
     try {
       final userData = loginC.getStorage.read('user');
       final idUser = userData['id'];
-      // var url = Uri.parse("${UrlApi.baseAPI}orders/?user=$idUser");
+
       var url =
           Uri.parse("${UrlApi.baseAPI}orders?user=$idUser&status=selesai");
       final response = await http.get(url, headers: {
@@ -93,9 +92,7 @@ class RiwayatController extends GetxController {
         selesaiList.value = jsonItems.map<Cart>((json) {
           return Cart.fromJson(json);
         }).toList();
-        // var cart = Cart.fromJson(result[0]);
-        // selesaiList.value = cart.toJson();
-        print(selesaiList[0].orderItem?[0].namaItem);
+
         update();
         isLoading(false);
         update();
@@ -106,6 +103,4 @@ class RiwayatController extends GetxController {
       throw Exception(e);
     }
   }
-
-  // void increment() => count.value++;
 }

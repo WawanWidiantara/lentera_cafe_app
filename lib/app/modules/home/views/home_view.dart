@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -33,8 +35,15 @@ class HomeView extends GetView<HomeController> {
                               height: 38,
                               width: constraints.maxWidth - 90,
                               child: TextFormField(
-                                onChanged: (search) {},
-                                onSaved: (search) {},
+                                controller: controller.searchController,
+                                onChanged: (search) {
+                                  controller.searchItem(
+                                      search.toString().toLowerCase());
+                                },
+                                onSaved: (search) {
+                                  controller.searchItem(
+                                      search.toString().toLowerCase());
+                                },
                                 textAlignVertical: TextAlignVertical.center,
                                 autofocus: false,
                                 style: const TextStyle(
@@ -69,7 +78,7 @@ class HomeView extends GetView<HomeController> {
                             ),
                             InkWell(
                               onTap: () {
-                                Get.to(NotificationView());
+                                Get.to(const NotificationView());
                               },
                               child: Container(
                                   width: 38,
@@ -88,7 +97,7 @@ class HomeView extends GetView<HomeController> {
                             )
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 32,
                         ),
                         Text.rich(
@@ -102,14 +111,14 @@ class HomeView extends GetView<HomeController> {
                               WidgetSpan(
                                 alignment: PlaceholderAlignment.baseline,
                                 baseline: TextBaseline.alphabetic,
-                                child: Text(
-                                  // _carsC.user.toString(),
-                                  'Widi',
-                                  style: const TextStyle(
-                                      fontSize: 22,
-                                      fontWeight: FontWeight.w700,
-                                      color: ColorsCafe.primaryRed),
-                                ),
+                                child: Obx(() => Text(
+                                      // _carsC.user.toString(),
+                                      controller.user.toString(),
+                                      style: const TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w700,
+                                          color: ColorsCafe.primaryRed),
+                                    )),
                               ),
                             ],
                           ),
@@ -124,20 +133,20 @@ class HomeView extends GetView<HomeController> {
                             fontWeight: FontWeight.w400,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         SizedBox(
                           width: Get.width,
                           height: 90,
                           child: ListView.builder(
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: const NeverScrollableScrollPhysics(),
                             scrollDirection: Axis.horizontal,
                             itemCount: 4,
                             itemBuilder: ((context, index) {
                               return Padding(
                                 padding: const EdgeInsets.only(right: 20),
-                                child: Container(
+                                child: SizedBox(
                                   width: 65,
                                   height: 90,
                                   child: Column(
@@ -150,7 +159,6 @@ class HomeView extends GetView<HomeController> {
                                           controller.fetchItemsData(controller
                                               .items[index]
                                               .toLowerCase());
-                                          print(controller.items[index]);
                                         },
                                         child: SizedBox(
                                           child: Obx(() => Container(
@@ -280,7 +288,7 @@ class HomeView extends GetView<HomeController> {
                                                         fontWeight:
                                                             FontWeight.w700),
                                                   ),
-                                                  SizedBox(
+                                                  const SizedBox(
                                                     height: 5,
                                                   ),
                                                   Text(

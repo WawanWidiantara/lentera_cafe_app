@@ -37,7 +37,7 @@ class RegisterView extends GetView<RegisterController> {
                         ),
                         Container(
                           width: Get.width / 3,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             border: Border(
                               bottom: BorderSide(
                                 color: ColorsCafe.primaryRed,
@@ -45,7 +45,7 @@ class RegisterView extends GetView<RegisterController> {
                               ),
                             ),
                           ),
-                          child: Text(
+                          child: const Text(
                             "Daftar",
                             style: TextStyle(
                               fontSize: 22,
@@ -263,8 +263,8 @@ class RegisterView extends GetView<RegisterController> {
                           height: 45,
                         ),
                         controller.isLoading.value == true
-                            ? Center(
-                                child: const CircularProgressIndicator(
+                            ? const Center(
+                                child: CircularProgressIndicator(
                                   color: ColorsCafe.primaryRed,
                                 ),
                               )
@@ -289,7 +289,6 @@ class RegisterView extends GetView<RegisterController> {
                                       controller.telpController.text,
                                     );
                                     FocusScope.of(context).unfocus();
-                                    // controller.checkLogin();
                                   },
                                   child: const Text(
                                     "Daftar",
@@ -331,7 +330,7 @@ class RegisterView extends GetView<RegisterController> {
                             ),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         )
                       ],

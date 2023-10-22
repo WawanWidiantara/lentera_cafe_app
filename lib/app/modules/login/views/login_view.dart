@@ -37,7 +37,7 @@ class LoginView extends GetView<LoginController> {
                       ),
                       Container(
                         width: Get.width / 3,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           border: Border(
                             bottom: BorderSide(
                               color: ColorsCafe.primaryRed,
@@ -45,7 +45,7 @@ class LoginView extends GetView<LoginController> {
                             ),
                           ),
                         ),
-                        child: Text(
+                        child: const Text(
                           "Masuk",
                           style: TextStyle(
                             fontSize: 22,
@@ -67,7 +67,6 @@ class LoginView extends GetView<LoginController> {
                         height: 16,
                       ),
                       SizedBox(
-                        // height: 41,
                         child: TextFormField(
                           autofocus: false,
                           controller: controller.emailController,
@@ -119,7 +118,6 @@ class LoginView extends GetView<LoginController> {
                         height: 16,
                       ),
                       SizedBox(
-                        // height: 41,
                         child: TextFormField(
                           obscureText: true,
                           autofocus: false,
@@ -150,7 +148,7 @@ class LoginView extends GetView<LoginController> {
                                   color: ColorsCafe.formStroke),
                               borderRadius: BorderRadius.circular(20.0),
                             ),
-                            enabledBorder: UnderlineInputBorder(
+                            enabledBorder: OutlineInputBorder(
                               borderSide: const BorderSide(
                                   color: ColorsCafe.formStroke),
                               borderRadius: BorderRadius.circular(20.0),
@@ -162,8 +160,8 @@ class LoginView extends GetView<LoginController> {
                         height: 60,
                       ),
                       controller.isLoading.value == true
-                          ? Center(
-                              child: const CircularProgressIndicator(
+                          ? const Center(
+                              child: CircularProgressIndicator(
                                 color: ColorsCafe.primaryRed,
                               ),
                             )
@@ -184,9 +182,8 @@ class LoginView extends GetView<LoginController> {
                                   controller.kliklogin(
                                       controller.emailController.text,
                                       controller.passwordController.text);
-                                  // Get.toNamed(Routes.BOTTOM_NAVBAR);
+
                                   FocusScope.of(context).unfocus();
-                                  // controller.checkLogin();
                                 },
                                 child: const Text(
                                   "Masuk",

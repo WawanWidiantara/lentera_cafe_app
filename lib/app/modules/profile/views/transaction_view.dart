@@ -31,7 +31,7 @@ class TransactionView extends GetView<TransactionController> {
             Obx(() => TabBar(
                   controller: controller.controller,
                   isScrollable: true,
-                  labelPadding: EdgeInsets.symmetric(horizontal: 40.0),
+                  labelPadding: const EdgeInsets.symmetric(horizontal: 40.0),
                   tabs: controller.riwayatTabs,
                   labelColor: controller.tabIndex.value == 0
                       ? ColorsCafe.primaryRed
@@ -50,7 +50,7 @@ class TransactionView extends GetView<TransactionController> {
                   unselectedLabelStyle:
                       const TextStyle(fontWeight: FontWeight.normal),
                 )),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Expanded(

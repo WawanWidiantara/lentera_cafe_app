@@ -47,20 +47,20 @@ class AdminFinishView extends GetView {
                                   children: [
                                     Text(
                                       'Order ID : ${controller.selesaiList[index].id}',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600),
                                     ),
                                     Text(
                                       '${controller.selesaiList[index].waktuPemesanan}',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w400),
                                     ),
                                   ],
                                 ),
                               ),
-                              Divider(
+                              const Divider(
                                 height: 1,
                                 thickness: 1,
                               ),
@@ -72,7 +72,7 @@ class AdminFinishView extends GetView {
                                   children: [
                                     Row(
                                       children: [
-                                        Text(
+                                        const Text(
                                           'Jumlah: ',
                                           style: TextStyle(
                                               fontSize: 14,
@@ -80,7 +80,7 @@ class AdminFinishView extends GetView {
                                         ),
                                         Text(
                                           '${controller.selesaiList[index].orderItem?.length}',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w600),
                                         ),
@@ -88,7 +88,7 @@ class AdminFinishView extends GetView {
                                     ),
                                     Row(
                                       children: [
-                                        Text(
+                                        const Text(
                                           'Total: ',
                                           style: TextStyle(
                                               fontSize: 14,
@@ -96,7 +96,7 @@ class AdminFinishView extends GetView {
                                         ),
                                         Text(
                                           'Rp. ${controller.selesaiList[index].totalPembayaran}',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w600),
                                         ),
@@ -113,7 +113,7 @@ class AdminFinishView extends GetView {
                                   children: [
                                     InkWell(
                                       onTap: () {
-                                        Get.to(AdminDetailNotaView(),
+                                        Get.to(const AdminDetailNotaView(),
                                             arguments: [
                                               controller.menungguList[index].id,
                                               'selesai'
@@ -124,7 +124,7 @@ class AdminFinishView extends GetView {
                                         width: 90,
                                         color: ColorsCafe.primaryGreen,
                                         alignment: Alignment.center,
-                                        child: Text(
+                                        child: const Text(
                                           'Detail',
                                           style: TextStyle(
                                               color: Colors.white,
@@ -133,7 +133,7 @@ class AdminFinishView extends GetView {
                                         ),
                                       ),
                                     ),
-                                    Text(
+                                    const Text(
                                       'Selesai',
                                       style: TextStyle(
                                           color: ColorsCafe.primaryGreen,

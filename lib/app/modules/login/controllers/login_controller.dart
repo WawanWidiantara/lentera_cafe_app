@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -7,6 +9,7 @@ import 'package:lentera_cafe_app/app/constants/url.dart';
 import 'package:lentera_cafe_app/app/data/models/user_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:lentera_cafe_app/app/routes/app_pages.dart';
+import 'package:lentera_cafe_app/app/widget/snackbar.dart';
 
 class LoginController extends GetxController {
   late User user;
@@ -73,16 +76,21 @@ class LoginController extends GetxController {
           getStorage.write('user', user.toJson());
           if (response['user']['is_admin'] == true) {
             Get.offAllNamed(Routes.ADMIN);
+            SnackBarWidget.showSnackBar('Login Berhasil',
+                'Anda telah berhasil masuk ke akun Anda', 'success');
           } else {
             Get.offAllNamed(Routes.BOTTOM_NAVBAR);
+            SnackBarWidget.showSnackBar('Login Berhasil',
+                'Anda telah berhasil masuk ke akun Anda', 'success');
           }
           isLoading(false);
         } else {
-          print("Login Invalid");
+          SnackBarWidget.showSnackBar(
+              'Login Gagal', 'Data yang anda inputkan tidak sesuai', 'err');
           isLoading(false);
         }
       }).catchError((err) {
-        print("$err");
+        SnackBarWidget.showSnackBar('Login Gagal', '$err', 'err');
         isLoading(false);
       });
     }

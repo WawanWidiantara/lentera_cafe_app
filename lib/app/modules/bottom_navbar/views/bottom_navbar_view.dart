@@ -29,7 +29,7 @@ class BottomNavbarView extends GetView<BottomNavbarController> {
             ProfileView(),
           ],
         ),
-        bottomNavigationBar: Container(
+        bottomNavigationBar: SizedBox(
           height: 70,
           child: BottomNavigationBar(
             backgroundColor: ColorsCafe.popUpBackground,

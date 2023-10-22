@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'dart:convert';
 
 import 'package:get/get.dart';
@@ -5,6 +7,7 @@ import 'package:lentera_cafe_app/app/constants/url.dart';
 import 'package:lentera_cafe_app/app/data/models/qna_saw_model.dart';
 import 'package:lentera_cafe_app/app/modules/login/controllers/login_controller.dart';
 import 'package:http/http.dart' as http;
+import 'package:lentera_cafe_app/app/widget/snackbar.dart';
 
 class SawController extends GetxController {
   var current = 0.obs;
@@ -44,14 +47,14 @@ class SawController extends GetxController {
       sawQnAList.value = jsonQnAs.map<QnaSaw>((json) {
         return QnaSaw.fromJson(json);
       }).toList();
-      // print(sawQnAList[0].subkriteria?[0]);
+
       update(sawQnAList);
       isLoading(false);
       update();
       return sawQnAList;
     } catch (e) {
+      SnackBarWidget.showSnackBar('Error', '$e', 'err');
       isLoading(false);
-      throw Exception(e);
     }
   }
 

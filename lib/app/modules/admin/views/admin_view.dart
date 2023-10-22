@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -16,7 +18,7 @@ class AdminView extends GetView<AdminController> {
       backgroundColor: ColorsCafe.primaryRed,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Row(
+        title: const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
@@ -45,7 +47,7 @@ class AdminView extends GetView<AdminController> {
         child: Container(
           width: Get.width,
           height: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               color: ColorsCafe.popUpBackground,
               borderRadius: BorderRadius.only(
                   topLeft: Radius.circular(20), topRight: Radius.circular(20))),
@@ -53,7 +55,7 @@ class AdminView extends GetView<AdminController> {
             padding: const EdgeInsets.fromLTRB(20, 20, 20, 100),
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Row(
@@ -80,10 +82,10 @@ class AdminView extends GetView<AdminController> {
                                 ),
                               )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text(
+                        const Text(
                           'Pembayaran ',
                           style: TextStyle(
                               color: ColorsCafe.mainText,
@@ -112,10 +114,10 @@ class AdminView extends GetView<AdminController> {
                                 ),
                               )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
-                        Text(
+                        const Text(
                           'Riwayat\nTransaksi ',
                           textAlign: TextAlign.center,
                           style: TextStyle(
@@ -129,8 +131,8 @@ class AdminView extends GetView<AdminController> {
                 ),
                 Expanded(child: Container()),
                 controller.isLoading.value == true
-                    ? Center(
-                        child: const CircularProgressIndicator(
+                    ? const Center(
+                        child: CircularProgressIndicator(
                           color: ColorsCafe.primaryRed,
                         ),
                       )
@@ -139,7 +141,7 @@ class AdminView extends GetView<AdminController> {
                         height: 45,
                         child: ElevatedButton(
                           style: ButtonStyle(
-                              backgroundColor: MaterialStatePropertyAll(
+                              backgroundColor: const MaterialStatePropertyAll(
                                   ColorsCafe.primaryRed),
                               shape: MaterialStatePropertyAll<
                                       RoundedRectangleBorder>(

@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'dart:convert';
 
 import 'package:get/get.dart';
@@ -5,6 +7,7 @@ import 'package:http/http.dart' as http;
 import 'package:lentera_cafe_app/app/constants/url.dart';
 import 'package:lentera_cafe_app/app/data/models/cart_model.dart';
 import 'package:lentera_cafe_app/app/modules/login/controllers/login_controller.dart';
+import 'package:lentera_cafe_app/app/widget/snackbar.dart';
 
 class ListNotaController extends GetxController {
   final loginC = Get.put(LoginController());
@@ -31,14 +34,14 @@ class ListNotaController extends GetxController {
   }
 
   Future fetchWaiting() async {
-    isLoading(false);
+    isLoading(true);
     try {
       var url = Uri.parse("${UrlApi.baseAPI}orders?status=dikonfirmasi");
       final response = await http.get(url, headers: {
         'Authorization': 'Token ${loginC.getStorage.read("token")}',
       });
       var result = json.decode(response.body);
-      // print(result);
+
       if (result.isEmpty) {
         menungguList.value = [];
         update();
@@ -50,17 +53,14 @@ class ListNotaController extends GetxController {
         menungguList.value = jsonItems.map<Cart>((json) {
           return Cart.fromJson(json);
         }).toList();
-        // var cart = Cart.fromJson(result[0]);
-        // menungguList.value = cart.toJson();
-        print(menungguList[0].orderItem?[0].namaItem);
         update();
         isLoading(false);
         update();
         return menungguList;
       }
     } catch (e) {
+      SnackBarWidget.showSnackBar('Error', '$e', 'err');
       isLoading(false);
-      throw Exception(e);
     }
   }
 
@@ -84,17 +84,14 @@ class ListNotaController extends GetxController {
         selesaiList.value = jsonItems.map<Cart>((json) {
           return Cart.fromJson(json);
         }).toList();
-        // var cart = Cart.fromJson(result[0]);
-        // selesaiList.value = cart.toJson();
-        print(selesaiList[0].orderItem?[0].namaItem);
         update();
         isLoading(false);
         update();
         return selesaiList;
       }
     } catch (e) {
+      SnackBarWidget.showSnackBar('Error', '$e', 'err');
       isLoading(false);
-      throw Exception(e);
     }
   }
 }

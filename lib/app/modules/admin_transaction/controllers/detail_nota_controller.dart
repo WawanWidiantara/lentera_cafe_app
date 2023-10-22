@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'dart:convert';
 
 import 'package:get/get.dart';
@@ -7,6 +9,7 @@ import 'package:lentera_cafe_app/app/data/models/cart_model.dart';
 import 'package:lentera_cafe_app/app/modules/admin_transaction/controllers/list_nota_controller.dart';
 import 'package:lentera_cafe_app/app/modules/login/controllers/login_controller.dart';
 import 'package:lentera_cafe_app/app/modules/profile/controllers/riwayat_controller.dart';
+import 'package:lentera_cafe_app/app/widget/snackbar.dart';
 
 class DetailNotaController extends GetxController {
   RxBool isLoading = false.obs;
@@ -36,7 +39,6 @@ class DetailNotaController extends GetxController {
 
   Future fetchCartData() async {
     isLoading(false);
-    print(idTransaksi);
     try {
       var url = Uri.parse("${UrlApi.baseAPI}orders/${idTransaksi[0]}");
       final response = await http.get(url, headers: {
@@ -51,19 +53,16 @@ class DetailNotaController extends GetxController {
       } else {
         Get.back();
         isLoading(false);
-        // Get.snackbar('Gagal', 'Transaksi belum dikonfirmasi');
       }
-      // print(detailTransaksi['order_item']);
-      // update();
     } catch (e) {
+      SnackBarWidget.showSnackBar('Error', '$e', 'err');
       isLoading(false);
       Get.back();
-      print(e);
     }
   }
 
   Future konfirmasiOrder() async {
-    isLoading(false);
+    isLoading(true);
     try {
       var url =
           Uri.parse("${UrlApi.baseAPI}orders/${idTransaksi[0]}/pay_order/");
@@ -74,7 +73,6 @@ class DetailNotaController extends GetxController {
           'Content-Type': 'application/json; charset=UTF-8',
           'Authorization': 'Token ${loginC.getStorage.read("token")}',
         },
-        // body: inputOrder,
       ).then((res) {
         if (res.statusCode == 200) {
           kasir.fetchWaiting();
@@ -83,14 +81,17 @@ class DetailNotaController extends GetxController {
           pelanggan.fetchFinish();
           isLoading(false);
           update();
+          Get.back();
         } else {
+          SnackBarWidget.showSnackBar('Gagal mengambil data',
+              'Error Status Code: ${res.statusCode}', 'err');
           isLoading(false);
           update();
         }
       });
     } catch (e) {
+      SnackBarWidget.showSnackBar('Error', '$e', 'err');
       isLoading(false);
-      throw Exception(e);
     }
   }
 

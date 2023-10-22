@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'dart:convert';
 
 import 'package:get/get.dart';
@@ -5,6 +7,7 @@ import 'package:lentera_cafe_app/app/constants/url.dart';
 import 'package:lentera_cafe_app/app/data/models/items_model.dart';
 import 'package:lentera_cafe_app/app/modules/login/controllers/login_controller.dart';
 import 'package:http/http.dart' as http;
+import 'package:lentera_cafe_app/app/widget/snackbar.dart';
 
 class ResultSawController extends GetxController {
   var saw = Get.arguments;
@@ -34,7 +37,7 @@ class ResultSawController extends GetxController {
     try {
       var url = Uri.parse("${UrlApi.baseAPI}saw/");
       var inputSAW = json.encode(saw);
-      // print(inputSAW);
+
       await http
           .post(
         url,
@@ -54,15 +57,16 @@ class ResultSawController extends GetxController {
           update(itemsList);
           isLoading(false);
           update();
-          print(itemsList);
         } else {
+          SnackBarWidget.showSnackBar('Gagal menampilkan hasil',
+              'Error Status Code: ${res.statusCode}', 'err');
           isLoading(false);
           update();
         }
       });
     } catch (e) {
+      SnackBarWidget.showSnackBar('Error', '$e', 'err');
       isLoading(false);
-      throw Exception(e);
     }
   }
 

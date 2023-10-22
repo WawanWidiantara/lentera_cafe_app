@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -5,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:lentera_cafe_app/app/constants/url.dart';
 import 'package:http/http.dart' as http;
 import 'package:lentera_cafe_app/app/routes/app_pages.dart';
+import 'package:lentera_cafe_app/app/widget/snackbar.dart';
 
 class RegisterController extends GetxController {
   final registerFormKey = GlobalKey<FormState>();
@@ -88,13 +91,16 @@ class RegisterController extends GetxController {
           .then((res) {
         if (res.statusCode == 200) {
           isLoading(false);
+          SnackBarWidget.showSnackBar('Registrasi Berhasil',
+              'Akun anda telah berhasil dibuat', 'success');
           Get.offAllNamed(Routes.LOGIN);
         } else {
-          print(res.statusCode);
+          SnackBarWidget.showSnackBar('Registrasi Gagal',
+              'Status Error Code: ${res.statusCode}', 'err');
           isLoading(false);
         }
       }).catchError((err) {
-        print("$err");
+        SnackBarWidget.showSnackBar('Error', '$err', 'err');
         isLoading(false);
       });
     }

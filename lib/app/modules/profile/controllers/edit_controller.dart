@@ -11,7 +11,7 @@ import 'package:http/http.dart' as http;
 import 'package:lentera_cafe_app/app/routes/app_pages.dart';
 import 'package:lentera_cafe_app/app/widget/snackbar.dart';
 
-class ProfileController extends GetxController {
+class EditController extends GetxController {
   final loginC = Get.put(LoginController());
   var user = "".obs;
   var data = {}.obs;
@@ -68,29 +68,6 @@ class ProfileController extends GetxController {
     return null;
   }
 
-  kliklogout() async {
-    isLoading(true);
-    var url = Uri.parse("${UrlApi.baseAPI}account/logout/");
-    var token = 'Token ${loginC.getStorage.read("token")}';
-
-    final response = await http.post(
-      url,
-      headers: {'Authorization': token},
-    );
-    if (response.statusCode == 204) {
-      loginC.getStorage.write('token', '');
-      loginC.getStorage.write('user', '');
-      isLoading(false);
-      Get.offAllNamed(Routes.LOGIN);
-      SnackBarWidget.showSnackBar('Logout Berhasil',
-          'Anda telah berhasil keluar ke akun Anda', 'success');
-    } else {
-      isLoading(false);
-      SnackBarWidget.showSnackBar('Gagal keluar dari akun',
-          'Error Status Code: ${response.statusCode}', 'err');
-    }
-  }
-
   simpan(String nama, String email, String noHp) {
     final isValid = profileFormKey.currentState!.validate();
     final userData = loginC.getStorage.read('user');
@@ -120,7 +97,7 @@ class ProfileController extends GetxController {
           Get.offAllNamed(Routes.BOTTOM_NAVBAR, arguments: 3);
           isLoading(false);
         } else {
-          SnackBarWidget.showSnackBar('Login Gagal',
+          SnackBarWidget.showSnackBar('Gagal Mengubah Data',
               'Data yang anda inputkan tidak sesuai ${res.statusCode}', 'err');
           isLoading(false);
         }

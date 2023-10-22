@@ -27,15 +27,14 @@ class ItemView extends GetView<ItemController> {
                             height: Get.height * 0.6,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                  image: NetworkImage(
-                                    controller.itemDetail['gambar'] != null
-                                        ? controller.itemDetail['gambar']
-                                            .toString()
-                                        : 'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif',
-                                  ),
+                                  image: NetworkImage(controller
+                                              .itemDetail['gambar'] !=
+                                          null
+                                      ? controller.itemDetail['gambar']
+                                          .toString()
+                                      : 'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif'),
                                   fit: BoxFit.cover),
                             ),
-                            // color: ColorsCafe.primaryRed,
                           )),
                     ),
                     Positioned(
@@ -44,7 +43,7 @@ class ItemView extends GetView<ItemController> {
                       right: 0,
                       child: Container(
                         height: Get.height * 0.55,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: ColorsCafe.popUpBackground,
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(20),
@@ -56,29 +55,28 @@ class ItemView extends GetView<ItemController> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
                               Obx(() => Text(
                                     controller.itemDetail['nama_item']
                                         .toString(),
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 18,
                                         fontWeight: FontWeight.w700),
                                   )),
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
                               Text(
                                 controller.itemDetail['deskripsi'].toString(),
-                                // 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut',
                                 textAlign: TextAlign.justify,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 30,
                               ),
                               Row(
@@ -92,13 +90,12 @@ class ItemView extends GetView<ItemController> {
                                     ),
                                     child: Row(
                                       children: [
-                                        Container(
+                                        SizedBox(
                                           width: 35,
                                           height: 35,
                                           child: ElevatedButton(
                                             onPressed: () {
                                               controller.decrement();
-                                              print(controller.count.value);
                                             },
                                             style: ButtonStyle(
                                               padding:
@@ -108,7 +105,7 @@ class ItemView extends GetView<ItemController> {
                                                   const MaterialStatePropertyAll(
                                                       ColorsCafe.formStroke),
                                             ),
-                                            child: Icon(Icons.remove),
+                                            child: const Icon(Icons.remove),
                                           ),
                                         ),
                                         Obx(() => SizedBox(
@@ -118,13 +115,12 @@ class ItemView extends GetView<ItemController> {
                                                       .count.value
                                                       .toString())),
                                             )),
-                                        Container(
+                                        SizedBox(
                                           width: 35,
                                           height: 35,
                                           child: ElevatedButton(
                                             onPressed: () {
                                               controller.increment();
-                                              print(controller.count.value);
                                             },
                                             style: ButtonStyle(
                                               padding:
@@ -134,26 +130,26 @@ class ItemView extends GetView<ItemController> {
                                                   const MaterialStatePropertyAll(
                                                       ColorsCafe.primaryRed),
                                             ),
-                                            child: Icon(Icons.add),
+                                            child: const Icon(Icons.add),
                                           ),
                                         ),
                                       ],
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                   Obx(() => Text(
                                         controller.itemDetail["harga"] != null
                                             ? 'Rp. ${controller.itemDetail["harga"] * controller.count.value}'
                                             : 'Rp. 0',
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontSize: 14,
                                             fontWeight: FontWeight.w700),
                                       )),
                                 ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 30,
                               ),
                               Row(
@@ -175,13 +171,9 @@ class ItemView extends GetView<ItemController> {
                                                       BorderRadius.circular(
                                                           20)))),
                                       onPressed: () {
-                                        // controller.kliklogin(
-                                        //     controller.emailController.text,
-                                        //     controller.passwordController.text);
                                         controller.postOrder();
 
                                         FocusScope.of(context).unfocus();
-                                        // controller.checkLogin();
                                       },
                                       child: const Text(
                                         "+ Keranjang",
@@ -217,7 +209,7 @@ class ItemView extends GetView<ItemController> {
                                               margin: EdgeInsets.only(
                                                   top: Get.height * 0.15),
                                               height: Get.height * 0.85,
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                 color:
                                                     ColorsCafe.popUpBackground,
                                                 borderRadius: BorderRadius.only(
@@ -242,22 +234,24 @@ class ItemView extends GetView<ItemController> {
                                                             .formStroke,
                                                       ),
                                                     ),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       height: 20,
                                                     ),
-                                                    Text('Tambahkan Catatan',
+                                                    const Text(
+                                                        'Tambahkan Catatan',
                                                         style: TextStyle(
                                                             fontSize: 18,
                                                             fontWeight:
                                                                 FontWeight
                                                                     .w700)),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       height: 10,
                                                     ),
                                                     Container(
                                                       height: Get.height * 0.28,
                                                       width: double.infinity,
-                                                      decoration: BoxDecoration(
+                                                      decoration:
+                                                          const BoxDecoration(
                                                         border: Border(
                                                           top: BorderSide(
                                                               width: 1.0,
@@ -334,7 +328,7 @@ class ItemView extends GetView<ItemController> {
                                                         ),
                                                       ),
                                                     ),
-                                                    SizedBox(
+                                                    const SizedBox(
                                                       height: 20,
                                                     ),
                                                     SizedBox(
@@ -376,9 +370,8 @@ class ItemView extends GetView<ItemController> {
                                               )),
                                         );
                                         FocusScope.of(context).unfocus();
-                                        // controller.checkLogin();
                                       },
-                                      child: ImageIcon(
+                                      child: const ImageIcon(
                                         AssetImage('assets/icons/catatan.png'),
                                         color: ColorsCafe.primaryRed,
                                       ),
@@ -399,7 +392,7 @@ class ItemView extends GetView<ItemController> {
                         onPressed: () {
                           Get.back();
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.arrow_back_outlined,
                           color: Colors.white,
                         ),

@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -7,6 +9,7 @@ import 'package:lentera_cafe_app/app/data/models/items_model.dart';
 import 'package:lentera_cafe_app/app/modules/cart/controllers/cart_controller.dart';
 import 'package:lentera_cafe_app/app/modules/login/controllers/login_controller.dart';
 import 'package:http/http.dart' as http;
+import 'package:lentera_cafe_app/app/widget/snackbar.dart';
 
 class ItemController extends GetxController {
   final loginC = Get.put(LoginController());
@@ -47,12 +50,12 @@ class ItemController extends GetxController {
           var item = Items.fromJson(response);
           itemDetail.value = item.toJson();
         } else {
-          print("Error");
+          SnackBarWidget.showSnackBar(
+              'Error', 'Error Status Code ${res.statusCode}', 'err');
         }
       });
     } catch (e) {
-      print(e.toString());
-      throw Exception(e);
+      SnackBarWidget.showSnackBar('Error', '$e', 'err');
     }
   }
 
@@ -65,7 +68,6 @@ class ItemController extends GetxController {
         "jumlah_pesanan": count.value,
         "catatan": catatan.value,
       });
-      print('$idItem, ${count.value}, ${catatan.value}');
       await http
           .post(
         url,
@@ -82,13 +84,15 @@ class ItemController extends GetxController {
           update();
           Get.back();
         } else {
+          SnackBarWidget.showSnackBar(
+              'Error', 'Error Status Code ${res.statusCode}', 'err');
           isLoading(false);
           update();
         }
       });
     } catch (e) {
+      SnackBarWidget.showSnackBar('Error', '$e', 'err');
       isLoading(false);
-      throw Exception(e);
     }
   }
 

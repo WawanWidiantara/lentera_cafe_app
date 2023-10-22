@@ -16,7 +16,7 @@ class DetailTransactionView extends GetView {
             ? ColorsCafe.primaryRed
             : ColorsCafe.primaryGreen,
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             'Detail Pesanan',
             style: TextStyle(
                 color: Colors.white, fontSize: 22, fontWeight: FontWeight.w700),
@@ -31,13 +31,13 @@ class DetailTransactionView extends GetView {
           child: Container(
             width: Get.width,
             height: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: ColorsCafe.popUpBackground,
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     topRight: Radius.circular(20))),
             child: SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
+              physics: const AlwaysScrollableScrollPhysics(),
               child: Column(
                 children: [
                   Padding(
@@ -87,7 +87,7 @@ class DetailTransactionView extends GetView {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Obx(() => ListView.builder(
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 shrinkWrap: true,
                                 itemCount:
                                     controller.detailTransaksi['order_item'] !=
@@ -109,7 +109,7 @@ class DetailTransactionView extends GetView {
                                                       null
                                                   ? '${controller.detailTransaksi['order_item'][index]['jumlah_pesanan']}x ${controller.detailTransaksi['order_item'][index]['nama_item']}'
                                                   : '',
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontSize: 14,
                                                   fontWeight: FontWeight.w400),
                                             )),
@@ -119,7 +119,7 @@ class DetailTransactionView extends GetView {
                                                   null
                                               ? 'Rp. ${controller.detailTransaksi['order_item'][index]['total_harga']}'
                                               : '',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               color: ColorsCafe.formStroke,
                                               fontSize: 14,
                                               fontWeight: FontWeight.w400),
@@ -128,14 +128,14 @@ class DetailTransactionView extends GetView {
                                     ),
                                   );
                                 })),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
-                            Divider(
+                            const Divider(
                               height: 1,
                               thickness: 1,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             controller.idTransaksi[1] == 'menunggu'
@@ -149,15 +149,15 @@ class DetailTransactionView extends GetView {
                                     width: Get.width / 1.5,
                                     height: Get.height / 3.5,
                                   ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
-                            Text(
+                            const Text(
                               'Total',
                               style: TextStyle(
                                   fontSize: 16, fontWeight: FontWeight.w700),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 5,
                             ),
                             Obx(() => Text(
@@ -174,7 +174,7 @@ class DetailTransactionView extends GetView {
                                     fontWeight: FontWeight.w700,
                                   ),
                                 )),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             )
                           ],

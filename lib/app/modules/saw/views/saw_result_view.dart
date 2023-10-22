@@ -25,7 +25,6 @@ class SawResultView extends GetView {
       body: LayoutBuilder(
         builder: (context, constraints) => Column(
           children: <Widget>[
-            // SliderWidget(SliderList, "text", "text"),
             Obx(() => Expanded(
                   child: SingleChildScrollView(
                     child: Padding(
@@ -72,7 +71,6 @@ class SawResultView extends GetView {
                                             AspectRatio(
                                               aspectRatio: 3 / 1.3,
                                               child: Container(
-                                                // height: 100,
                                                 decoration: BoxDecoration(
                                                   borderRadius:
                                                       const BorderRadius.only(
@@ -83,20 +81,16 @@ class SawResultView extends GetView {
                                                               Radius.circular(
                                                                   10)),
                                                   image: DecorationImage(
-                                                      image: NetworkImage(
-                                                        controller
-                                                                    .itemsList[
-                                                                        index]
-                                                                    .gambar !=
-                                                                null
-                                                            ? controller
-                                                                .itemsList[
-                                                                    index]
-                                                                .gambar
-                                                                .toString()
-                                                            : 'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif',
-                                                        // 'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif',
-                                                      ),
+                                                      image: NetworkImage(controller
+                                                                  .itemsList[
+                                                                      index]
+                                                                  .gambar !=
+                                                              null
+                                                          ? controller
+                                                              .itemsList[index]
+                                                              .gambar
+                                                              .toString()
+                                                          : 'https://docs.flutter.dev/assets/images/dash/dash-fainting.gif'),
                                                       fit: BoxFit.cover),
                                                 ),
                                               ),

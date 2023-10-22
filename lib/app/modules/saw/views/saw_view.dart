@@ -20,20 +20,19 @@ class SawView extends GetView<SawController> {
             Center(
               child: Image.asset(
                 IconsCafe.sawLogo,
-                // width: Get.width / 4,
                 height: Get.height / 2,
               ),
             ),
-            Text(
+            const Text(
               'Bingung mau pilih menu apa?',
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
             ),
-            SizedBox(height: 20),
-            Text(
+            const SizedBox(height: 20),
+            const Text(
               'Fitur ini, membuat anda dengan mudah menemukan menu makanan yang sesuai dengan preferensi dan kebutuhan anda. Jawab beberapa pertanyaan berikut untuk mendapatkan rekomendasi menunya.',
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             SizedBox(
               width: double.infinity,
               height: 45,
@@ -45,13 +44,9 @@ class SawView extends GetView<SawController> {
                         RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(20)))),
                 onPressed: () {
-                  // controller.kliklogin(
-                  //     controller.emailController.text,
-                  //     controller.passwordController.text);
-                  Get.to(SawQuestionView());
-                  // controller.fetchItemsData();
+                  Get.to(const SawQuestionView());
+
                   FocusScope.of(context).unfocus();
-                  // controller.checkLogin();
                 },
                 child: const Text(
                   "Rekomendasi Menu",

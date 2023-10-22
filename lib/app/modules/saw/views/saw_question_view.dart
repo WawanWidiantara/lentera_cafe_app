@@ -16,7 +16,7 @@ class SawQuestionView extends GetView {
                 controller.sawQnAList.isEmpty
                     ? ''
                     : '${controller.count}/${controller.sawQnAList.length} Pertanyaan',
-                style: TextStyle(
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 22,
                     fontWeight: FontWeight.w700),
@@ -53,12 +53,12 @@ class SawQuestionView extends GetView {
                               controller.sawQnAList.isEmpty
                                   ? ''
                                   : '${controller.count}.',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w700,
                               ),
                             )),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
                         Expanded(
@@ -66,7 +66,7 @@ class SawQuestionView extends GetView {
                                 controller.sawQnAList.isEmpty == false
                                     ? '${controller.sawQnAList[controller.count.value - 1].pertanyaan}'
                                     : '',
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w700,
                                 ),
@@ -74,11 +74,11 @@ class SawQuestionView extends GetView {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
                     Obx(() => ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: controller.sawQnAList.isEmpty == false
                             ? controller.sawQnAList[controller.count.value - 1]
@@ -86,7 +86,7 @@ class SawQuestionView extends GetView {
                             : 0,
                         itemBuilder: (context, index) {
                           return Padding(
-                            padding: EdgeInsets.symmetric(vertical: 8.0),
+                            padding: const EdgeInsets.symmetric(vertical: 8.0),
                             child: SizedBox(
                               height: 45,
                               child: ElevatedButton(
@@ -102,18 +102,17 @@ class SawQuestionView extends GetView {
                                               controller.count.value - 1]
                                           .subkriteria![index]
                                           .toString());
-                                  print(controller.jawaban);
                                   controller.current.value = index;
                                   controller
                                       .increment(controller.sawQnAList.length);
                                   if (controller.jawaban.length ==
                                       controller.sawQnAList.length) {
-                                    Get.off(SawResultView(),
+                                    Get.off(const SawResultView(),
                                         arguments: controller.jawaban);
                                   }
                                 },
                                 style: ButtonStyle(
-                                  shadowColor: MaterialStatePropertyAll(
+                                  shadowColor: const MaterialStatePropertyAll(
                                       Colors.transparent),
                                   backgroundColor:
                                       const MaterialStatePropertyAll(
@@ -121,7 +120,7 @@ class SawQuestionView extends GetView {
                                   shape: MaterialStatePropertyAll<
                                           RoundedRectangleBorder>(
                                       RoundedRectangleBorder(
-                                          side: BorderSide(
+                                          side: const BorderSide(
                                               color: ColorsCafe.formStroke,
                                               width: 1),
                                           borderRadius:
@@ -130,21 +129,20 @@ class SawQuestionView extends GetView {
                                       MaterialStateProperty.resolveWith<Color?>(
                                     (Set<MaterialState> states) {
                                       if (states
-                                          .contains(MaterialState.pressed))
-                                        return ColorsCafe
-                                            .primaryRed; //<-- SEE HERE
-                                      return null; // Defer to the widget's default.
+                                          .contains(MaterialState.pressed)) {
+                                        return ColorsCafe.primaryRed;
+                                      }
+                                      return null;
                                     },
                                   ),
                                   foregroundColor:
                                       MaterialStateProperty.resolveWith<Color?>(
                                     (Set<MaterialState> states) {
                                       if (states
-                                          .contains(MaterialState.pressed))
-                                        return ColorsCafe
-                                            .popUpBackground; //<-- SEE HERE
-                                      return ColorsCafe
-                                          .mainText; // Defer to the widget's default.
+                                          .contains(MaterialState.pressed)) {
+                                        return ColorsCafe.popUpBackground;
+                                      }
+                                      return ColorsCafe.mainText;
                                     },
                                   ),
                                 ),
@@ -156,11 +154,11 @@ class SawQuestionView extends GetView {
                                           controller.sawQnAList.isEmpty == false
                                               ? '${controller.sawQnAList[controller.count.value - 1].subkriteria?[index]}'
                                               : '',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.w700),
                                         )),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 10,
                                     ),
                                   ],
@@ -168,59 +166,8 @@ class SawQuestionView extends GetView {
                               ),
                             ),
                           );
-                          // return Padding(
-                          //   padding: const EdgeInsets.symmetric(vertical: 8.0),
-                          //   child: InkWell(
-                          //     onTap: () {
-                          //       print(controller
-                          //           .sawQnAList[controller.count.value - 1]
-                          //           .subkriteria?[index]);
-                          //       controller.current.value = index;
-                          //       controller
-                          //           .increment(controller.sawQnAList.length);
-                          //       // if (controller.count.value ==
-                          //       //     controller.sawQnAList.length) {
-                          //       //   Get.off(SawResultView());
-                          //       // }
-                          //     },
-                          //     child: Obx(() => Container(
-                          //         height: 45,
-                          //         decoration: BoxDecoration(
-                          //           borderRadius: BorderRadius.circular(20),
-                          //           border: Border.all(
-                          //               color: controller.current.value == index
-                          //                   ? ColorsCafe.primaryRed
-                          //                   : ColorsCafe.formStroke,
-                          //               width: 1),
-                          //           color: controller.current.value == index
-                          //               ? ColorsCafe.primaryRed
-                          //               : ColorsCafe.popUpBackground,
-                          //         ),
-                          //         alignment: Alignment.centerLeft,
-                          //         child: Padding(
-                          //           padding: const EdgeInsets.only(left: 20.0),
-                          //           child: Obx(() => Text(
-                          //                 // 'Pilihan ${index + 1}',
-                          //                 controller.sawQnAList.isEmpty == false
-                          //                     ? '${controller.sawQnAList[controller.count.value - 1].subkriteria?[index]}'
-                          //                     : '',
-                          //                 style: TextStyle(
-                          //                     color: controller.current.value ==
-                          //                             index
-                          //                         ? Colors.white
-                          //                         : ColorsCafe.mainText,
-                          //                     fontSize: 16,
-                          //                     fontWeight:
-                          //                         controller.current.value ==
-                          //                                 index
-                          //                             ? FontWeight.w700
-                          //                             : FontWeight.w500),
-                          //               )),
-                          //         ))),
-                          //   ),
-                          // );
                         })),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     )
                   ],

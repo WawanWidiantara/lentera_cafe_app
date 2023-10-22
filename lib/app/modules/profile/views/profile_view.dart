@@ -5,8 +5,6 @@ import 'package:get/get.dart';
 import 'package:lentera_cafe_app/app/constants/colors.dart';
 import 'package:lentera_cafe_app/app/modules/profile/views/edit_profile_view.dart';
 import 'package:lentera_cafe_app/app/modules/profile/views/transaction_view.dart';
-// import 'package:lentera_cafe_app/app/routes/app_pages.dart';
-// import 'package:lentera_cafe_app/app/routes/app_pages.dart';
 
 import '../controllers/profile_controller.dart';
 
@@ -31,12 +29,12 @@ class ProfileView extends GetView<ProfileController> {
       body: SingleChildScrollView(
         child: Center(
             child: Padding(
-                padding: EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(20.0),
                 child: Obx(
                   () => Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 75,
                         width: 75,
                         child: ProfilePicture(
@@ -45,27 +43,27 @@ class ProfileView extends GetView<ProfileController> {
                           fontsize: 21,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
-                      Text(
+                      const Text(
                         'Gede Widiantara',
                         style: TextStyle(
                             color: ColorsCafe.mainText,
                             fontSize: 16,
                             fontWeight: FontWeight.w500),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
-                      Text(
+                      const Text(
                         'gdwidi13@gmail.com',
                         style: TextStyle(
                             color: ColorsCafe.mainText,
                             fontSize: 12,
                             fontWeight: FontWeight.w400),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 50,
                       ),
                       SizedBox(
@@ -73,7 +71,7 @@ class ProfileView extends GetView<ProfileController> {
                         height: 45,
                         child: ElevatedButton(
                           style: ButtonStyle(
-                              backgroundColor: MaterialStatePropertyAll(
+                              backgroundColor: const MaterialStatePropertyAll(
                                   ColorsCafe.popUpBackground),
                               shape: MaterialStatePropertyAll<
                                       RoundedRectangleBorder>(
@@ -84,12 +82,12 @@ class ProfileView extends GetView<ProfileController> {
                             // controller.kliklogin(
                             //     controller.emailController.text,
                             //     controller.passwordController.text);
-                            Get.to(EditProfileView());
+                            Get.to(const EditProfileView());
                             FocusScope.of(context).unfocus();
                             // controller.checkLogin();
                           },
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                          child: const Padding(
+                            padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -107,7 +105,7 @@ class ProfileView extends GetView<ProfileController> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       SizedBox(
@@ -115,7 +113,7 @@ class ProfileView extends GetView<ProfileController> {
                         height: 45,
                         child: ElevatedButton(
                           style: ButtonStyle(
-                              backgroundColor: MaterialStatePropertyAll(
+                              backgroundColor: const MaterialStatePropertyAll(
                                   ColorsCafe.popUpBackground),
                               shape: MaterialStatePropertyAll<
                                       RoundedRectangleBorder>(
@@ -126,12 +124,12 @@ class ProfileView extends GetView<ProfileController> {
                             // controller.kliklogin(
                             //     controller.emailController.text,
                             //     controller.passwordController.text);
-                            Get.to(TransactionView());
+                            Get.to(const TransactionView());
                             FocusScope.of(context).unfocus();
                             // controller.checkLogin();
                           },
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                          child: const Padding(
+                            padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -149,7 +147,7 @@ class ProfileView extends GetView<ProfileController> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       SizedBox(
@@ -157,7 +155,7 @@ class ProfileView extends GetView<ProfileController> {
                         height: 45,
                         child: ElevatedButton(
                           style: ButtonStyle(
-                              backgroundColor: MaterialStatePropertyAll(
+                              backgroundColor: const MaterialStatePropertyAll(
                                   ColorsCafe.popUpBackground),
                               shape: MaterialStatePropertyAll<
                                       RoundedRectangleBorder>(
@@ -172,8 +170,8 @@ class ProfileView extends GetView<ProfileController> {
                             FocusScope.of(context).unfocus();
                             // controller.checkLogin();
                           },
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                          child: const Padding(
+                            padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -196,12 +194,12 @@ class ProfileView extends GetView<ProfileController> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 125,
                       ),
                       controller.isLoading.value == true
-                          ? Center(
-                              child: const CircularProgressIndicator(
+                          ? const Center(
+                              child: CircularProgressIndicator(
                                 color: ColorsCafe.primaryRed,
                               ),
                             )
@@ -210,8 +208,9 @@ class ProfileView extends GetView<ProfileController> {
                               height: 45,
                               child: ElevatedButton(
                                 style: ButtonStyle(
-                                    backgroundColor: MaterialStatePropertyAll(
-                                        ColorsCafe.primaryRed),
+                                    backgroundColor:
+                                        const MaterialStatePropertyAll(
+                                            ColorsCafe.primaryRed),
                                     shape: MaterialStatePropertyAll<
                                             RoundedRectangleBorder>(
                                         RoundedRectangleBorder(

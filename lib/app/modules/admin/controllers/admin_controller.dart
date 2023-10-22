@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_overrides
+
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
@@ -6,6 +8,7 @@ import 'package:lentera_cafe_app/app/modules/admin_transaction/views/admin_detai
 import 'package:lentera_cafe_app/app/modules/login/controllers/login_controller.dart';
 import 'package:http/http.dart' as http;
 import 'package:lentera_cafe_app/app/routes/app_pages.dart';
+import 'package:lentera_cafe_app/app/widget/snackbar.dart';
 
 class AdminController extends GetxController {
   final loginC = Get.put(LoginController());
@@ -32,7 +35,7 @@ class AdminController extends GetxController {
     isLoading(true);
     var url = Uri.parse("${UrlApi.baseAPI}account/logout/");
     var token = 'Token ${loginC.getStorage.read("token")}';
-    // loginC.getStorage.write("token", '');
+
     final response = await http.post(
       url,
       headers: {'Authorization': token},
@@ -42,10 +45,12 @@ class AdminController extends GetxController {
       loginC.getStorage.write('user', '');
       isLoading(false);
       Get.offAllNamed(Routes.LOGIN);
-      print("Logout Berhasil");
+      SnackBarWidget.showSnackBar('Logout Berhasil',
+          'Anda telah berhasil keluar ke akun Anda', 'success');
     } else {
       isLoading(false);
-      print("Status code: ${response.statusCode}");
+      SnackBarWidget.showSnackBar('Gagal keluar dari akun',
+          'Error Status Code: ${response.statusCode}', 'err');
     }
   }
 
@@ -53,9 +58,8 @@ class AdminController extends GetxController {
     try {
       scanned = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.QR);
-      // Get.snackbar('title', scanned);
-      // var idOrder = int.parse(scanned);
-      Get.to(AdminDetailNotaView(), arguments: [scanned, 'menunggu']);
+
+      Get.to(const AdminDetailNotaView(), arguments: [scanned, 'menunggu']);
     } on PlatformException {
       Get.snackbar('title', 'message');
     }

@@ -3,11 +3,13 @@ import 'package:flutter_profile_picture/flutter_profile_picture.dart';
 
 import 'package:get/get.dart';
 import 'package:lentera_cafe_app/app/constants/colors.dart';
+import 'package:lentera_cafe_app/app/modules/profile/controllers/edit_controller.dart';
 
 class EditProfileView extends GetView {
   const EditProfileView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(EditController());
     return Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -21,194 +23,199 @@ class EditProfileView extends GetView {
           elevation: 0,
         ),
         body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: SizedBox(
-                    height: 75,
-                    width: 75,
-                    child: ProfilePicture(
-                      name: 'Gede Widiantara',
-                      radius: 31,
-                      fontsize: 21,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-                const Text(
-                  "Nama",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                SizedBox(
-                  height: 41,
-                  child: TextFormField(
-                    autofocus: false,
-                    // controller: controller.fullNameController,
-                    // validator: (value) {
-                    //   return controller.validateName(value!);
-                    // },
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: ColorsCafe.greyText,
-                    ),
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.fromLTRB(16, 5, 0, 5),
-                      hintText: 'Gede Widiantara',
-                      filled: true,
-                      fillColor: ColorsCafe.formFill,
-                      errorBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.red),
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(color: ColorsCafe.formStroke),
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(color: ColorsCafe.formStroke),
-                        borderRadius: BorderRadius.circular(20.0),
+            child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Form(
+            key: controller.profileFormKey,
+            child: Obx(
+              () => Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Center(
+                    child: SizedBox(
+                      height: 75,
+                      width: 75,
+                      child: ProfilePicture(
+                        name: 'Gede Widiantara',
+                        radius: 31,
+                        fontsize: 21,
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Text(
-                  "Email",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
+                  const SizedBox(
+                    height: 30,
                   ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                SizedBox(
-                  height: 41,
-                  child: TextFormField(
-                    autofocus: false,
-                    // controller: controller.fullNameController,
-                    // validator: (value) {
-                    //   return controller.validateName(value!);
-                    // },
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: ColorsCafe.greyText,
+                  const Text(
+                    "Nama",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
                     ),
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.fromLTRB(16, 5, 0, 5),
-                      hintText: 'gdwidi13@gmail.com',
-                      filled: true,
-                      fillColor: ColorsCafe.formFill,
-                      errorBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.red),
-                        borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  SizedBox(
+                    child: TextFormField(
+                      autofocus: false,
+                      controller: controller.namaController,
+                      validator: (value) {
+                        return controller.validateName(value!);
+                      },
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: ColorsCafe.greyText,
                       ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(color: ColorsCafe.formStroke),
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(color: ColorsCafe.formStroke),
-                        borderRadius: BorderRadius.circular(20.0),
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.fromLTRB(16, 5, 0, 5),
+                        filled: true,
+                        fillColor: ColorsCafe.formFill,
+                        errorBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.red),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: ColorsCafe.formStroke),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: ColorsCafe.formStroke),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                const Text(
-                  "Nomor Telepon",
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
+                  const SizedBox(
+                    height: 20,
                   ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                SizedBox(
-                  height: 41,
-                  child: TextFormField(
-                    autofocus: false,
-                    // controller: controller.fullNameController,
-                    // validator: (value) {
-                    //   return controller.validateName(value!);
-                    // },
-                    style: const TextStyle(
-                      fontSize: 12,
-                      color: ColorsCafe.greyText,
+                  const Text(
+                    "Email",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
                     ),
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.fromLTRB(16, 5, 0, 5),
-                      hintText: '082146560178',
-                      filled: true,
-                      fillColor: ColorsCafe.formFill,
-                      errorBorder: OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.red),
-                        borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  SizedBox(
+                    child: TextFormField(
+                      autofocus: false,
+                      controller: controller.emailController,
+                      validator: (value) {
+                        return controller.validateEmail(value!);
+                      },
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: ColorsCafe.greyText,
                       ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(color: ColorsCafe.formStroke),
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(color: ColorsCafe.formStroke),
-                        borderRadius: BorderRadius.circular(20.0),
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.fromLTRB(16, 5, 0, 5),
+                        filled: true,
+                        fillColor: ColorsCafe.formFill,
+                        errorBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.red),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: ColorsCafe.formStroke),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: ColorsCafe.formStroke),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 125,
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStatePropertyAll(ColorsCafe.primaryRed),
-                        shape: MaterialStatePropertyAll<RoundedRectangleBorder>(
-                            RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)))),
-                    onPressed: () {
-                      // controller.kliklogin(
-                      //     controller.emailController.text,
-                      //     controller.passwordController.text);
-                      Get.back();
-                      FocusScope.of(context).unfocus();
-                      // controller.checkLogin();
-                    },
-                    child: const Text(
-                      "Simpan",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Text(
+                    "Nomor Telepon",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  SizedBox(
+                    child: TextFormField(
+                      autofocus: false,
+                      controller: controller.noHpController,
+                      validator: (value) {
+                        return controller.validateNoHP(value!);
+                      },
+                      style: const TextStyle(
+                        fontSize: 12,
+                        color: ColorsCafe.greyText,
+                      ),
+                      decoration: InputDecoration(
+                        contentPadding: const EdgeInsets.fromLTRB(16, 5, 0, 5),
+                        filled: true,
+                        fillColor: ColorsCafe.formFill,
+                        errorBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.red),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: ColorsCafe.formStroke),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: ColorsCafe.formStroke),
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 125,
+                  ),
+                  controller.isLoading.value == true
+                      ? const Center(
+                          child: CircularProgressIndicator(
+                            color: ColorsCafe.primaryRed,
+                          ),
+                        )
+                      : SizedBox(
+                          width: double.infinity,
+                          height: 50,
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                                backgroundColor: const MaterialStatePropertyAll(
+                                    ColorsCafe.primaryRed),
+                                shape: MaterialStatePropertyAll<
+                                        RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20)))),
+                            onPressed: () {
+                              controller.simpan(
+                                  controller.namaController.text,
+                                  controller.emailController.text,
+                                  controller.noHpController.text);
+                              FocusScope.of(context).unfocus();
+                            },
+                            child: const Text(
+                              "Simpan",
+                              style: TextStyle(
+                                  fontSize: 18, fontWeight: FontWeight.w700),
+                            ),
+                          ),
+                        ),
+                ],
+              ),
             ),
           ),
-        ));
+        )));
   }
 }
