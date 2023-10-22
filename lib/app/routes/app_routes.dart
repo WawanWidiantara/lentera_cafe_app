@@ -12,6 +12,9 @@ abstract class Routes {
   static const LOGIN = _Paths.LOGIN;
   static const REGISTER = _Paths.REGISTER;
   static const BOTTOM_NAVBAR = _Paths.BOTTOM_NAVBAR;
+  static const QR_SCANNER = _Paths.QR_SCANNER;
+  static const ADMIN = _Paths.ADMIN;
+  static const ADMIN_TRANSACTION = _Paths.ADMIN_TRANSACTION;
 }
 
 abstract class _Paths {
@@ -25,4 +28,7 @@ abstract class _Paths {
   static const LOGIN = '/login';
   static const REGISTER = '/register';
   static const BOTTOM_NAVBAR = '/bottom-navbar';
+  static const QR_SCANNER = '/qr-scanner';
+  static const ADMIN = '/admin';
+  static const ADMIN_TRANSACTION = '/admin-transaction';
 }

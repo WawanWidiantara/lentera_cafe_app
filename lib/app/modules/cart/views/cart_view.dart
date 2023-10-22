@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:lentera_cafe_app/app/constants/colors.dart';
-import 'package:lentera_cafe_app/app/constants/icons.dart';
-import 'package:lentera_cafe_app/app/modules/profile/views/detail_transaction_view.dart';
 import 'package:lentera_cafe_app/app/routes/app_pages.dart';
 
 import '../controllers/cart_controller.dart';

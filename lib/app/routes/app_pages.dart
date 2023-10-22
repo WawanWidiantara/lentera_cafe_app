@@ -1,5 +1,9 @@
 import 'package:get/get.dart';
 
+import '../modules/admin/bindings/admin_binding.dart';
+import '../modules/admin/views/admin_view.dart';
+import '../modules/admin_transaction/bindings/admin_transaction_binding.dart';
+import '../modules/admin_transaction/views/admin_transaction_view.dart';
 import '../modules/bottom_navbar/bindings/bottom_navbar_binding.dart';
 import '../modules/bottom_navbar/views/bottom_navbar_view.dart';
 import '../modules/cart/bindings/cart_binding.dart';
@@ -71,6 +75,16 @@ class AppPages {
       name: _Paths.BOTTOM_NAVBAR,
       page: () => const BottomNavbarView(),
       binding: BottomNavbarBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN,
+      page: () => const AdminView(),
+      binding: AdminBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADMIN_TRANSACTION,
+      page: () => const AdminTransactionView(),
+      binding: AdminTransactionBinding(),
     ),
   ];
 }

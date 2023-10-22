@@ -6,6 +6,7 @@ import 'package:lentera_cafe_app/app/constants/colors.dart';
 import 'package:lentera_cafe_app/app/modules/profile/views/edit_profile_view.dart';
 import 'package:lentera_cafe_app/app/modules/profile/views/transaction_view.dart';
 // import 'package:lentera_cafe_app/app/routes/app_pages.dart';
+// import 'package:lentera_cafe_app/app/routes/app_pages.dart';
 
 import '../controllers/profile_controller.dart';
 
@@ -167,7 +168,7 @@ class ProfileView extends GetView<ProfileController> {
                             // controller.kliklogin(
                             //     controller.emailController.text,
                             //     controller.passwordController.text);
-                            // Get.offAllNamed(Routes.LOGIN);
+                            // Get.toNamed(Routes.ADMIN);
                             FocusScope.of(context).unfocus();
                             // controller.checkLogin();
                           },

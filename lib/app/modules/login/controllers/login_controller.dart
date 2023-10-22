@@ -71,8 +71,12 @@ class LoginController extends GetxController {
           getStorage.write("token", response['token']);
           var user = User.fromJson(response['user']);
           getStorage.write('user', user.toJson());
+          if (response['user']['is_admin'] == true) {
+            Get.offAllNamed(Routes.ADMIN);
+          } else {
+            Get.offAllNamed(Routes.BOTTOM_NAVBAR);
+          }
           isLoading(false);
-          Get.offAllNamed(Routes.BOTTOM_NAVBAR);
         } else {
           print("Login Invalid");
           isLoading(false);

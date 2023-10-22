@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:lentera_cafe_app/app/constants/colors.dart';
-import 'package:lentera_cafe_app/app/modules/profile/controllers/riwayat_controller.dart';
-import 'package:lentera_cafe_app/app/modules/profile/views/detail_transaction_view.dart';
+import 'package:lentera_cafe_app/app/modules/admin_transaction/controllers/list_nota_controller.dart';
+import 'package:lentera_cafe_app/app/modules/admin_transaction/views/admin_detail_nota_view.dart';
 
-class WaitingView extends GetView {
-  const WaitingView({Key? key}) : super(key: key);
+class AdminFinishView extends GetView {
+  const AdminFinishView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(RiwayatController());
+    final controller = Get.put(ListNotaController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -20,7 +20,7 @@ class WaitingView extends GetView {
                 Obx(() => ListView.builder(
                     physics: const BouncingScrollPhysics(),
                     shrinkWrap: true,
-                    itemCount: controller.menungguList.length,
+                    itemCount: controller.selesaiList.length,
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -46,13 +46,13 @@ class WaitingView extends GetView {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'Order ID : ${controller.menungguList[index].id}',
+                                      'Order ID : ${controller.selesaiList[index].id}',
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600),
                                     ),
                                     Text(
-                                      '${controller.menungguList[index].waktuPemesanan}',
+                                      '${controller.selesaiList[index].waktuPemesanan}',
                                       style: TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w400),
@@ -79,7 +79,7 @@ class WaitingView extends GetView {
                                               fontWeight: FontWeight.w400),
                                         ),
                                         Text(
-                                          '${controller.menungguList[index].orderItem?.length}',
+                                          '${controller.selesaiList[index].orderItem?.length}',
                                           style: TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w600),
@@ -95,7 +95,7 @@ class WaitingView extends GetView {
                                               fontWeight: FontWeight.w400),
                                         ),
                                         Text(
-                                          'Rp. ${controller.menungguList[index].totalPembayaran}',
+                                          'Rp. ${controller.selesaiList[index].totalPembayaran}',
                                           style: TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w600),
@@ -113,16 +113,16 @@ class WaitingView extends GetView {
                                   children: [
                                     InkWell(
                                       onTap: () {
-                                        Get.to(DetailTransactionView(),
+                                        Get.to(AdminDetailNotaView(),
                                             arguments: [
                                               controller.menungguList[index].id,
-                                              'menunggu'
+                                              'selesai'
                                             ]);
                                       },
                                       child: Container(
                                         height: 30,
                                         width: 90,
-                                        color: ColorsCafe.primaryRed,
+                                        color: ColorsCafe.primaryGreen,
                                         alignment: Alignment.center,
                                         child: Text(
                                           'Detail',
@@ -134,9 +134,9 @@ class WaitingView extends GetView {
                                       ),
                                     ),
                                     Text(
-                                      'Menunggu',
+                                      'Selesai',
                                       style: TextStyle(
-                                          color: ColorsCafe.primaryRed,
+                                          color: ColorsCafe.primaryGreen,
                                           fontSize: 14,
                                           fontWeight: FontWeight.w400),
                                     ),

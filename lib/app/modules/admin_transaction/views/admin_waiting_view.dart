@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:lentera_cafe_app/app/constants/colors.dart';
-import 'package:lentera_cafe_app/app/modules/profile/controllers/riwayat_controller.dart';
-import 'package:lentera_cafe_app/app/modules/profile/views/detail_transaction_view.dart';
+import 'package:lentera_cafe_app/app/modules/admin_transaction/controllers/list_nota_controller.dart';
+import 'package:lentera_cafe_app/app/modules/admin_transaction/views/admin_detail_nota_view.dart';
 
-class WaitingView extends GetView {
-  const WaitingView({Key? key}) : super(key: key);
+class AdminWaitingView extends GetView {
+  const AdminWaitingView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(RiwayatController());
+    final controller = Get.put(ListNotaController());
     return Scaffold(
       body: SingleChildScrollView(
         child: Center(
@@ -113,7 +113,7 @@ class WaitingView extends GetView {
                                   children: [
                                     InkWell(
                                       onTap: () {
-                                        Get.to(DetailTransactionView(),
+                                        Get.to(AdminDetailNotaView(),
                                             arguments: [
                                               controller.menungguList[index].id,
                                               'menunggu'
