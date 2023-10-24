@@ -32,7 +32,7 @@ class SplashController extends GetxController {
         }).then((res) {
           if (res.statusCode == 200) {
             var response = json.decode(res.body);
-            if (response['user']['is_admin'] == true) {
+            if (response['is_admin'] == true) {
               Future.delayed(const Duration(seconds: 3), () {
                 Get.offAllNamed(Routes.ADMIN);
               });
