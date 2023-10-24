@@ -14,6 +14,8 @@ import 'package:lentera_cafe_app/app/widget/snackbar.dart';
 class ProfileController extends GetxController {
   final loginC = Get.put(LoginController());
   var user = "".obs;
+  var email = "".obs;
+
   var data = {}.obs;
 
   RxBool isLoading = false.obs;
@@ -27,6 +29,7 @@ class ProfileController extends GetxController {
     final userData = loginC.getStorage.read('user');
     String? nama = userData['full_name'];
     user.value = nama?.capitalize ?? '';
+    email.value = userData['email'];
 
     namaController = TextEditingController();
     emailController = TextEditingController();

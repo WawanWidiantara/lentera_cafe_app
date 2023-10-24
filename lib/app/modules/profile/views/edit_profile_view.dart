@@ -31,12 +31,12 @@ class EditProfileView extends GetView {
               () => Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Center(
+                  Center(
                     child: SizedBox(
                       height: 75,
                       width: 75,
                       child: ProfilePicture(
-                        name: 'Gede Widiantara',
+                        name: controller.user.toString(),
                         radius: 31,
                         fontsize: 21,
                       ),

@@ -331,7 +331,7 @@ class RegisterView extends GetView<RegisterController> {
                           ),
                         ),
                         const SizedBox(
-                          height: 10,
+                          height: 50,
                         )
                       ],
                     ),

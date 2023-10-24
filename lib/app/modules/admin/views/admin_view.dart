@@ -18,23 +18,23 @@ class AdminView extends GetView<AdminController> {
       backgroundColor: ColorsCafe.primaryRed,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Row(
+        title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
+            const Text(
               'Halo, Kasir',
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 22,
                   fontWeight: FontWeight.w500),
             ),
-            Text(
-              'Gede Widiantara',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                  fontWeight: FontWeight.w700),
-            ),
+            Obx(() => Text(
+                  controller.user.toString(),
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700),
+                )),
           ],
         ),
         iconTheme: const IconThemeData(color: Colors.white),

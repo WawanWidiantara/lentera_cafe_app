@@ -12,6 +12,7 @@ import 'package:lentera_cafe_app/app/widget/snackbar.dart';
 
 class AdminController extends GetxController {
   final loginC = Get.put(LoginController());
+  var user = "".obs;
   var qrCode = ''.obs;
   String scanned = '';
 
@@ -19,6 +20,10 @@ class AdminController extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    final userData = loginC.getStorage.read('user');
+    var nama = userData['full_name'];
+    String? namaDepan = nama?.split(' ')[0];
+    user.value = namaDepan?.capitalize ?? '';
   }
 
   @override
@@ -59,7 +64,9 @@ class AdminController extends GetxController {
       scanned = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.QR);
 
-      Get.to(const AdminDetailNotaView(), arguments: [scanned, 'menunggu']);
+      if (scanned != "-1") {
+        Get.to(const AdminDetailNotaView(), arguments: [scanned, 'menunggu']);
+      }
     } on PlatformException {
       Get.snackbar('title', 'message');
     }

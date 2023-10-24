@@ -427,6 +427,7 @@ class CartView extends GetView<CartController> {
                                                       fontSize: 10,
                                                       fontWeight:
                                                           FontWeight.w400),
+                                                  maxLines: 1,
                                                 ),
                                               ),
                                             ],

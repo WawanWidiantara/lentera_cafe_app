@@ -12,13 +12,12 @@ class SplashView extends GetView<SplashController> {
     return Scaffold(
       body: Container(
         decoration: const BoxDecoration(
-          color: ColorsCafe.mainBackground,
+          color: ColorsCafe.popUpBackground,
         ),
         child: Center(
           child: Image.asset(
             IconsCafe.logoFull,
-            width: Get.width / 1.5,
-            height: Get.height / 3.5,
+            width: 270,
           ),
         ),
       ),

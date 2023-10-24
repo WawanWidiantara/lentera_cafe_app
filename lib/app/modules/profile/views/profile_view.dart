@@ -34,11 +34,11 @@ class ProfileView extends GetView<ProfileController> {
                   () => Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      const SizedBox(
+                      SizedBox(
                         height: 75,
                         width: 75,
                         child: ProfilePicture(
-                          name: 'Gede Widiantara',
+                          name: controller.user.toString(),
                           radius: 31,
                           fontsize: 21,
                         ),
@@ -46,9 +46,9 @@ class ProfileView extends GetView<ProfileController> {
                       const SizedBox(
                         height: 30,
                       ),
-                      const Text(
-                        'Gede Widiantara',
-                        style: TextStyle(
+                      Text(
+                        controller.user.toString(),
+                        style: const TextStyle(
                             color: ColorsCafe.mainText,
                             fontSize: 16,
                             fontWeight: FontWeight.w500),
@@ -56,9 +56,9 @@ class ProfileView extends GetView<ProfileController> {
                       const SizedBox(
                         height: 5,
                       ),
-                      const Text(
-                        'gdwidi13@gmail.com',
-                        style: TextStyle(
+                      Text(
+                        controller.email.toString(),
+                        style: const TextStyle(
                             color: ColorsCafe.mainText,
                             fontSize: 12,
                             fontWeight: FontWeight.w400),

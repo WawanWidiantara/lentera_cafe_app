@@ -9,6 +9,7 @@ import 'package:lentera_cafe_app/app/data/models/cart_model.dart';
 import 'package:lentera_cafe_app/app/modules/admin_transaction/controllers/list_nota_controller.dart';
 import 'package:lentera_cafe_app/app/modules/login/controllers/login_controller.dart';
 import 'package:lentera_cafe_app/app/modules/profile/controllers/riwayat_controller.dart';
+import 'package:lentera_cafe_app/app/routes/app_pages.dart';
 import 'package:lentera_cafe_app/app/widget/snackbar.dart';
 
 class DetailNotaController extends GetxController {
@@ -44,20 +45,28 @@ class DetailNotaController extends GetxController {
       final response = await http.get(url, headers: {
         'Authorization': 'Token ${loginC.getStorage.read("token")}',
       });
-      var result = json.decode(response.body);
-      var cart = Cart.fromJson(result);
-      detailTransaksi.value = cart.toJson();
-      if (detailTransaksi['status'] == 'dikonfirmasi') {
-        update();
-        isLoading(false);
+      if (response.statusCode == 200) {
+        var result = json.decode(response.body);
+        var cart = Cart.fromJson(result);
+        detailTransaksi.value = cart.toJson();
+        if (detailTransaksi['status'] == 'dikonfirmasi') {
+          update();
+          isLoading(false);
+        } else {
+          Get.offAllNamed(Routes.ADMIN);
+          SnackBarWidget.showSnackBar(
+              'Invalid', 'Data sudahh dikonfirmasi', 'err');
+          isLoading(false);
+        }
       } else {
-        Get.back();
+        SnackBarWidget.showSnackBar('Error', 'Kode QR tidak falid', 'err');
+        Get.offAllNamed(Routes.ADMIN);
         isLoading(false);
       }
     } catch (e) {
       SnackBarWidget.showSnackBar('Error', '$e', 'err');
-      isLoading(false);
       Get.back();
+      isLoading(false);
     }
   }
 
