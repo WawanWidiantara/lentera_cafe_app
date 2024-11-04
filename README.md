@@ -22,7 +22,7 @@ One of the standout features of this project is the implementation of the Simple
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/yourusername/food-menu-recommendation-app.git
+   git clone https://github.com/WawanWidiantara/menu_recommendation_app.git
    cd food-menu-recommendation-app
    ```
    
