@@ -3,12 +3,12 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:get/get.dart';
-import 'package:lentera_cafe_app/app/constants/url.dart';
-import 'package:lentera_cafe_app/app/modules/admin_transaction/views/admin_detail_nota_view.dart';
-import 'package:lentera_cafe_app/app/modules/login/controllers/login_controller.dart';
+import 'package:menu_recommendation_app/app/constants/url.dart';
+import 'package:menu_recommendation_app/app/modules/admin_transaction/views/admin_detail_nota_view.dart';
+import 'package:menu_recommendation_app/app/modules/login/controllers/login_controller.dart';
 import 'package:http/http.dart' as http;
-import 'package:lentera_cafe_app/app/routes/app_pages.dart';
-import 'package:lentera_cafe_app/app/widget/snackbar.dart';
+import 'package:menu_recommendation_app/app/routes/app_pages.dart';
+import 'package:menu_recommendation_app/app/widget/snackbar.dart';
 
 class AdminController extends GetxController {
   final loginC = Get.put(LoginController());

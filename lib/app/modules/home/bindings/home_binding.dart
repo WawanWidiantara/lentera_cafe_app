@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import 'package:lentera_cafe_app/app/modules/home/controllers/notification_controller.dart';
+import 'package:menu_recommendation_app/app/modules/home/controllers/notification_controller.dart';
 
 import '../controllers/home_controller.dart';
 

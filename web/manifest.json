@@ -1,6 +1,6 @@
 {
-    "name": "lentera_cafe_app",
-    "short_name": "lentera_cafe_app",
+    "name": "menu_recommendation_app",
+    "short_name": "menu_recommendation_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

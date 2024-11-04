@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 
-import 'package:lentera_cafe_app/app/modules/profile/controllers/detail_riwayat_controller.dart';
-import 'package:lentera_cafe_app/app/modules/profile/controllers/riwayat_controller.dart';
-import 'package:lentera_cafe_app/app/modules/profile/controllers/transaction_controller.dart';
+import 'package:menu_recommendation_app/app/modules/profile/controllers/detail_riwayat_controller.dart';
+import 'package:menu_recommendation_app/app/modules/profile/controllers/riwayat_controller.dart';
+import 'package:menu_recommendation_app/app/modules/profile/controllers/transaction_controller.dart';
 
 import '../controllers/profile_controller.dart';
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:lentera_cafe_app/app/constants/colors.dart';
-import 'package:lentera_cafe_app/app/constants/icons.dart';
-import 'package:lentera_cafe_app/app/modules/admin_transaction/controllers/detail_nota_controller.dart';
+import 'package:menu_recommendation_app/app/constants/colors.dart';
+import 'package:menu_recommendation_app/app/constants/icons.dart';
+import 'package:menu_recommendation_app/app/modules/admin_transaction/controllers/detail_nota_controller.dart';
 
 class AdminDetailNotaView extends GetView {
   const AdminDetailNotaView({Key? key}) : super(key: key);

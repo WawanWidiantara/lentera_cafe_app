@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:lentera_cafe_app/app/constants/colors.dart';
-import 'package:lentera_cafe_app/app/constants/icons.dart';
-import 'package:lentera_cafe_app/app/routes/app_pages.dart';
+import 'package:menu_recommendation_app/app/constants/colors.dart';
+import 'package:menu_recommendation_app/app/constants/icons.dart';
+import 'package:menu_recommendation_app/app/routes/app_pages.dart';
 
 import '../controllers/login_controller.dart';
 
@@ -66,44 +66,7 @@ class LoginView extends GetView<LoginController> {
                       const SizedBox(
                         height: 16,
                       ),
-                      SizedBox(
-                        child: TextFormField(
-                          autofocus: false,
-                          controller: controller.emailController,
-                          validator: (value) {
-                            return controller.validateEmail(value!);
-                          },
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: ColorsCafe.greyText,
-                          ),
-                          decoration: InputDecoration(
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(16, 5, 0, 5),
-                            hintText: 'Masukkan email anda',
-                            filled: true,
-                            fillColor: ColorsCafe.formFill,
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.red),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.red),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: ColorsCafe.formStroke),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: ColorsCafe.formStroke),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                          ),
-                        ),
-                      ),
+                      FormEmail(controller: controller),
                       const SizedBox(
                         height: 20,
                       ),
@@ -117,45 +80,7 @@ class LoginView extends GetView<LoginController> {
                       const SizedBox(
                         height: 16,
                       ),
-                      SizedBox(
-                        child: TextFormField(
-                          obscureText: true,
-                          autofocus: false,
-                          controller: controller.passwordController,
-                          validator: (value) {
-                            return controller.validatePassword(value!);
-                          },
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: ColorsCafe.greyText,
-                          ),
-                          decoration: InputDecoration(
-                            contentPadding:
-                                const EdgeInsets.fromLTRB(16, 5, 0, 5),
-                            hintText: 'Masukkan password anda',
-                            filled: true,
-                            fillColor: ColorsCafe.formFill,
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.red),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.red),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: ColorsCafe.formStroke),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: ColorsCafe.formStroke),
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                          ),
-                        ),
-                      ),
+                      FormPassword(controller: controller),
                       const SizedBox(
                         height: 60,
                       ),
@@ -232,5 +157,102 @@ class LoginView extends GetView<LoginController> {
             ),
           ),
         ));
+  }
+}
+
+class FormPassword extends StatelessWidget {
+  const FormPassword({
+    super.key,
+    required this.controller,
+  });
+
+  final LoginController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: TextFormField(
+        obscureText: true,
+        autofocus: false,
+        controller: controller.passwordController,
+        validator: (value) {
+          return controller.validatePassword(value!);
+        },
+        style: const TextStyle(
+          fontSize: 12,
+          color: ColorsCafe.greyText,
+        ),
+        decoration: InputDecoration(
+          contentPadding: const EdgeInsets.fromLTRB(16, 5, 0, 5),
+          hintText: 'Masukkan password anda',
+          filled: true,
+          fillColor: ColorsCafe.formFill,
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.red),
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.red),
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: ColorsCafe.formStroke),
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: ColorsCafe.formStroke),
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class FormEmail extends StatelessWidget {
+  const FormEmail({
+    super.key,
+    required this.controller,
+  });
+
+  final LoginController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      child: TextFormField(
+        autofocus: false,
+        controller: controller.emailController,
+        validator: (value) {
+          return controller.validateEmail(value!);
+        },
+        style: const TextStyle(
+          fontSize: 12,
+          color: ColorsCafe.greyText,
+        ),
+        decoration: InputDecoration(
+          contentPadding: const EdgeInsets.fromLTRB(16, 5, 0, 5),
+          hintText: 'Masukkan email anda',
+          filled: true,
+          fillColor: ColorsCafe.formFill,
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.red),
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: Colors.red),
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: ColorsCafe.formStroke),
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: ColorsCafe.formStroke),
+            borderRadius: BorderRadius.circular(20.0),
+          ),
+        ),
+      ),
+    );
   }
 }

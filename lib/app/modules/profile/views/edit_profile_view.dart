@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_profile_picture/flutter_profile_picture.dart';
 
 import 'package:get/get.dart';
-import 'package:lentera_cafe_app/app/constants/colors.dart';
-import 'package:lentera_cafe_app/app/modules/profile/controllers/edit_controller.dart';
+import 'package:menu_recommendation_app/app/constants/colors.dart';
+import 'package:menu_recommendation_app/app/modules/profile/controllers/edit_controller.dart';
 
 class EditProfileView extends GetView {
   const EditProfileView({Key? key}) : super(key: key);

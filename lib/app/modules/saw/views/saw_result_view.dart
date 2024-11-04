@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:lentera_cafe_app/app/constants/colors.dart';
-import 'package:lentera_cafe_app/app/modules/saw/controllers/result_saw_controller.dart';
-import 'package:lentera_cafe_app/app/routes/app_pages.dart';
+import 'package:menu_recommendation_app/app/constants/colors.dart';
+import 'package:menu_recommendation_app/app/modules/saw/controllers/result_saw_controller.dart';
+import 'package:menu_recommendation_app/app/routes/app_pages.dart';
 
 class SawResultView extends GetView {
   const SawResultView({Key? key}) : super(key: key);

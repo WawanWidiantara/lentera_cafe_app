@@ -4,11 +4,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lentera_cafe_app/app/constants/url.dart';
-import 'package:lentera_cafe_app/app/data/models/items_model.dart';
-import 'package:lentera_cafe_app/app/modules/login/controllers/login_controller.dart';
+import 'package:menu_recommendation_app/app/constants/url.dart';
+import 'package:menu_recommendation_app/app/data/models/items_model.dart';
+import 'package:menu_recommendation_app/app/modules/login/controllers/login_controller.dart';
 import 'package:http/http.dart' as http;
-import 'package:lentera_cafe_app/app/widget/snackbar.dart';
+import 'package:menu_recommendation_app/app/widget/snackbar.dart';
 
 class HomeController extends GetxController {
   var current = 0.obs;

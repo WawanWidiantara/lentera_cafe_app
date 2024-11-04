@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:lentera_cafe_app/app/constants/colors.dart';
-import 'package:lentera_cafe_app/app/modules/admin_transaction/views/admin_finish_view.dart';
-import 'package:lentera_cafe_app/app/modules/admin_transaction/views/admin_waiting_view.dart';
+import 'package:menu_recommendation_app/app/constants/colors.dart';
+import 'package:menu_recommendation_app/app/modules/admin_transaction/views/admin_finish_view.dart';
+import 'package:menu_recommendation_app/app/modules/admin_transaction/views/admin_waiting_view.dart';
 
 import '../controllers/admin_transaction_controller.dart';
 

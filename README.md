@@ -1,4 +1,4 @@
-# lentera_cafe_app
+# menu_recommendation_app
 
 A new Flutter project.
 

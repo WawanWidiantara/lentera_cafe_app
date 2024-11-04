@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:lentera_cafe_app/app/constants/colors.dart';
+import 'package:menu_recommendation_app/app/constants/colors.dart';
 import 'package:get/get.dart';
-import 'package:lentera_cafe_app/app/constants/icons.dart';
+import 'package:menu_recommendation_app/app/constants/icons.dart';
 
 import '../controllers/splash_controller.dart';
 

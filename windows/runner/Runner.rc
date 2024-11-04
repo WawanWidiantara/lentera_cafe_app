@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.liburngoding" "\0"
-            VALUE "FileDescription", "lentera_cafe_app" "\0"
+            VALUE "FileDescription", "menu_recommendation_app" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "lentera_cafe_app" "\0"
+            VALUE "InternalName", "menu_recommendation_app" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.liburngoding. All rights reserved." "\0"
-            VALUE "OriginalFilename", "lentera_cafe_app.exe" "\0"
-            VALUE "ProductName", "lentera_cafe_app" "\0"
+            VALUE "OriginalFilename", "menu_recommendation_app.exe" "\0"
+            VALUE "ProductName", "menu_recommendation_app" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

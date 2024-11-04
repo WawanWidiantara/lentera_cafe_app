@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:lentera_cafe_app/app/constants/colors.dart';
-import 'package:lentera_cafe_app/app/modules/home/controllers/notification_controller.dart';
-import 'package:lentera_cafe_app/app/modules/profile/views/detail_transaction_view.dart';
+import 'package:menu_recommendation_app/app/constants/colors.dart';
+import 'package:menu_recommendation_app/app/modules/home/controllers/notification_controller.dart';
+import 'package:menu_recommendation_app/app/modules/profile/views/detail_transaction_view.dart';
 
 class NotificationView extends GetView {
   const NotificationView({Key? key}) : super(key: key);

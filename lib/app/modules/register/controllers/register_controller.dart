@@ -4,10 +4,10 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lentera_cafe_app/app/constants/url.dart';
+import 'package:menu_recommendation_app/app/constants/url.dart';
 import 'package:http/http.dart' as http;
-import 'package:lentera_cafe_app/app/routes/app_pages.dart';
-import 'package:lentera_cafe_app/app/widget/snackbar.dart';
+import 'package:menu_recommendation_app/app/routes/app_pages.dart';
+import 'package:menu_recommendation_app/app/widget/snackbar.dart';
 
 class RegisterController extends GetxController {
   final registerFormKey = GlobalKey<FormState>();

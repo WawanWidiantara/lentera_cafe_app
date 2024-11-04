@@ -5,13 +5,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:lentera_cafe_app/app/constants/colors.dart';
-import 'package:lentera_cafe_app/app/constants/icons.dart';
-import 'package:lentera_cafe_app/app/constants/url.dart';
-import 'package:lentera_cafe_app/app/data/models/cart_model.dart';
-import 'package:lentera_cafe_app/app/modules/login/controllers/login_controller.dart';
-import 'package:lentera_cafe_app/app/modules/profile/views/detail_transaction_view.dart';
-import 'package:lentera_cafe_app/app/widget/snackbar.dart';
+import 'package:menu_recommendation_app/app/constants/colors.dart';
+import 'package:menu_recommendation_app/app/constants/icons.dart';
+import 'package:menu_recommendation_app/app/constants/url.dart';
+import 'package:menu_recommendation_app/app/data/models/cart_model.dart';
+import 'package:menu_recommendation_app/app/modules/login/controllers/login_controller.dart';
+import 'package:menu_recommendation_app/app/modules/profile/views/detail_transaction_view.dart';
+import 'package:menu_recommendation_app/app/widget/snackbar.dart';
 
 class CartController extends GetxController {
   final loginC = Get.put(LoginController());

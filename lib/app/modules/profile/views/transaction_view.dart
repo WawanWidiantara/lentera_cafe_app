@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:lentera_cafe_app/app/constants/colors.dart';
-import 'package:lentera_cafe_app/app/modules/profile/controllers/transaction_controller.dart';
-import 'package:lentera_cafe_app/app/modules/profile/views/finish_view.dart';
-import 'package:lentera_cafe_app/app/modules/profile/views/waiting_view.dart';
+import 'package:menu_recommendation_app/app/constants/colors.dart';
+import 'package:menu_recommendation_app/app/modules/profile/controllers/transaction_controller.dart';
+import 'package:menu_recommendation_app/app/modules/profile/views/finish_view.dart';
+import 'package:menu_recommendation_app/app/modules/profile/views/waiting_view.dart';
 
 class TransactionView extends GetView<TransactionController> {
   const TransactionView({Key? key}) : super(key: key);

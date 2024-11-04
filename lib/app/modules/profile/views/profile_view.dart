@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_profile_picture/flutter_profile_picture.dart';
 
 import 'package:get/get.dart';
-import 'package:lentera_cafe_app/app/constants/colors.dart';
-import 'package:lentera_cafe_app/app/modules/profile/views/edit_profile_view.dart';
-import 'package:lentera_cafe_app/app/modules/profile/views/transaction_view.dart';
+import 'package:menu_recommendation_app/app/constants/colors.dart';
+import 'package:menu_recommendation_app/app/modules/profile/views/edit_profile_view.dart';
+import 'package:menu_recommendation_app/app/modules/profile/views/transaction_view.dart';
 
 import '../controllers/profile_controller.dart';
 
@@ -79,12 +79,8 @@ class ProfileView extends GetView<ProfileController> {
                                       borderRadius:
                                           BorderRadius.circular(10)))),
                           onPressed: () {
-                            // controller.kliklogin(
-                            //     controller.emailController.text,
-                            //     controller.passwordController.text);
                             Get.to(const EditProfileView());
                             FocusScope.of(context).unfocus();
-                            // controller.checkLogin();
                           },
                           child: const Padding(
                             padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
@@ -121,12 +117,8 @@ class ProfileView extends GetView<ProfileController> {
                                       borderRadius:
                                           BorderRadius.circular(10)))),
                           onPressed: () {
-                            // controller.kliklogin(
-                            //     controller.emailController.text,
-                            //     controller.passwordController.text);
                             Get.to(const TransactionView());
                             FocusScope.of(context).unfocus();
-                            // controller.checkLogin();
                           },
                           child: const Padding(
                             padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
@@ -163,12 +155,7 @@ class ProfileView extends GetView<ProfileController> {
                                       borderRadius:
                                           BorderRadius.circular(10)))),
                           onPressed: () {
-                            // controller.kliklogin(
-                            //     controller.emailController.text,
-                            //     controller.passwordController.text);
-                            // Get.toNamed(Routes.ADMIN);
                             FocusScope.of(context).unfocus();
-                            // controller.checkLogin();
                           },
                           child: const Padding(
                             padding: EdgeInsets.fromLTRB(8, 0, 8, 0),

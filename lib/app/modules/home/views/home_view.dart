@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
-import 'package:lentera_cafe_app/app/constants/colors.dart';
-import 'package:lentera_cafe_app/app/modules/home/views/notification_view.dart';
-import 'package:lentera_cafe_app/app/routes/app_pages.dart';
+import 'package:menu_recommendation_app/app/constants/colors.dart';
+import 'package:menu_recommendation_app/app/modules/home/views/notification_view.dart';
+import 'package:menu_recommendation_app/app/routes/app_pages.dart';
 
 import '../controllers/home_controller.dart';
 
